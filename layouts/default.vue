@@ -1,55 +1,42 @@
 <template>
-  <div>
-    <Nuxt />
+  <div class="flex h-screen w-screen">
+    <div
+      class="max-w-xs bg-primary h-screen shadow-md flex-grow flex flex-col items-center"
+    >
+      <div
+        class="border-8 rounded-full border-secondary border-solid m-12 overflow-hidden"
+      >
+        <img src="~/assets/images/profile.jpg" />
+      </div>
+      <div class="w-full text-center font-bold mb-12">
+        <div class="text-white text-2xl">Miquel Romero Sanfeliu</div>
+        <div class="text-secondary text-xl">Frontend Developer</div>
+      </div>
+      <NavigationMenu />
+      <div class="flex-grow"></div>
+      <div class="w-full flex">
+        <a
+          href="/resume.pdf"
+          target="_blank"
+          class="text-center bg-transparent flex-grow m-6 hover:bg-white text-white font-semibold hover:text-primary py-2 px-4 border border-white hover:border-transparent rounded"
+        >
+          Open resume in PDF
+        </a>
+      </div>
+    </div>
+    <div class="bg-gray-200 flex-grow">
+      <Nuxt />
+    </div>
   </div>
 </template>
 
-<style>
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
+<script lang="ts">
+import Vue from 'vue'
+import NavigationMenu from '@/components/NavigationMenu.vue'
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
-}
-</style>
+export default Vue.extend({
+  components: {
+    NavigationMenu,
+  },
+})
+</script>
