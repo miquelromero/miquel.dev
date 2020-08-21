@@ -1,5 +1,8 @@
 <template>
-  <div class="font-body" :class="`bg-${color}-200`">
+  <div
+    class="font-body transition-colors duration-300 ease-in-out"
+    :class="`bg-${color}-200`"
+  >
     <transition
       enter-active-class="transition-opacity duration-300 ease-in-out"
       leave-active-class="transition-opacity duration-300 ease-in-out"
