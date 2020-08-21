@@ -1,10 +1,21 @@
 <template>
   <div class="font-body" :class="`bg-${color}-200`">
-    <div
-      :class="{ 'opacity-50': visible, hidden: !visible }"
-      class="md:hidden z-10 w-screen h-screen fixed bg-black opacity-0 transition-opacity duration-300 ease-in-out"
-      @click="visible = false"
-    ></div>
+    <transition
+      enter-active-class="transition-opacity duration-300 ease-in-out"
+      leave-active-class="transition-opacity duration-300 ease-in-out"
+      enter-class="opacity-0"
+      enter-to-class="opacity-100"
+      leave-class="opacity-100"
+      leave-to-class="opacity-0"
+    >
+      <div
+        v-show="visible"
+        class="md:hidden z-10 w-screen h-screen fixed"
+        @click="visible = false"
+      >
+        <div class="w-full h-full bg-black opacity-50"></div>
+      </div>
+    </transition>
     <div
       class="transition-transform md:transform-none duration-300 ease-in-out transform -translate-x-64 fixed z-20 shadow-2xl md:shadow-none top-0 w-64 bg-gray-800 h-screen flex flex-col overflow-y-auto"
       :class="{ 'transform-none': visible }"
