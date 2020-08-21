@@ -1,3 +1,7 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+const sections = require('./assets/sections').default;
+const colors = sections.map((section) => section.color);
+
 /*
  ** TailwindCSS Configuration File
  **
@@ -5,12 +9,17 @@
  ** Default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
  */
 module.exports = {
+  experimental: {
+    uniformColorPalette: true,
+  },
+  future: {
+    removeDeprecatedGapUtilities: true,
+  },
   theme: {
-    extend: {
-      colors: {
-        primary: '#41B883',
-        secondary: '#34495E',
-      },
+    fontFamily: {
+      display: ['Comfortaa', ...defaultTheme.fontFamily.sans],
+      body: ['Montserrat', ...defaultTheme.fontFamily.sans],
+      // mono: ['Fira Code', ...defaultTheme.fontFamily.mono],
     },
   },
   variants: {},
@@ -18,6 +27,16 @@ module.exports = {
   purge: {
     // Learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css
     enabled: process.env.NODE_ENV === 'production',
+    options: {
+      whitelist: colors.flatMap((color) => [
+        `bg-${color}-100`,
+        `bg-${color}-200`,
+        `bg-${color}-800`,
+        `hover:bg-${color}-200`,
+        `hover:text-${color}-800`,
+        `text-${color}-800`,
+      ]),
+    },
     content: [
       'components/**/*.vue',
       'layouts/**/*.vue',
@@ -26,4 +45,4 @@ module.exports = {
       'nuxt.config.js',
     ],
   },
-}
+};

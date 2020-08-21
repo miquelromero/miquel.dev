@@ -3,7 +3,7 @@ export default {
    ** Nuxt rendering mode
    ** See https://nuxtjs.org/api/configuration-mode
    */
-  mode: 'universal',
+  mode: process.env.NODE_ENV === 'production' ? 'universal' : 'spa',
   /*
    ** Nuxt target
    ** See https://nuxtjs.org/api/configuration-target
@@ -14,7 +14,7 @@ export default {
    ** See https://nuxtjs.org/api/configuration-head
    */
   head: {
-    title: 'Miquel Romero Sanfeliu',
+    titleTemplate: '%s | Miquel.dev',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -47,6 +47,17 @@ export default {
     '@nuxt/typescript-build',
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
     '@nuxtjs/tailwindcss',
+
+    [
+      '@nuxtjs/google-fonts',
+      {
+        families: {
+          Montserrat: [400],
+          Comfortaa: [300, 400],
+          // 'Fira Code': [100, 200, 300, 400, 500, 600, 700, 800, 900],
+        },
+      },
+    ],
   ],
   /*
    ** Nuxt.js modules
@@ -62,4 +73,7 @@ export default {
    ** See https://nuxtjs.org/api/configuration-build/
    */
   build: {},
-}
+  router: {
+    middleware: 'pageMeta',
+  },
+};
