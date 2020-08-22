@@ -1,34 +1,40 @@
-const sections = [
+interface Page {
+  title: string;
+  color: string;
+  routeName: string;
+}
+
+const pages: Page[] = [
   {
     title: 'About',
     color: 'green',
-    route: 'index',
+    routeName: 'index',
   },
   {
     title: 'Experience',
     color: 'blue',
-    route: 'experience',
+    routeName: 'experience',
   },
   {
     title: 'Projects',
     color: 'orange',
-    route: 'projects',
+    routeName: 'projects',
   },
   {
     title: 'Skills',
     color: 'teal',
-    route: 'skills',
+    routeName: 'skills',
   },
   {
     title: 'Education',
     color: 'yellow',
-    route: 'education',
+    routeName: 'education',
   },
   {
     title: 'Contact',
     color: 'purple',
-    route: 'contact',
+    routeName: 'contact',
   },
 ];
 
-export default sections;
+export default pages;

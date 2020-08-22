@@ -10,7 +10,7 @@ import Vue from 'vue';
 export default Vue.extend({
   head() {
     return {
-      title: 'Projects',
+      title: 'Projects made by',
     };
   },
 });

@@ -19,7 +19,7 @@ export default Vue.extend({
   },
   head() {
     return {
-      title: 'Experience',
+      title: 'Experience of',
     };
   },
 });

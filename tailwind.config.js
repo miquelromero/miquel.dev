@@ -1,6 +1,6 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
-const sections = require('./assets/sections').default;
-const colors = sections.map((section) => section.color);
+const pages = require('./assets/pages').default;
+const colors = pages.map((page) => page.color);
 
 /*
  ** TailwindCSS Configuration File
