@@ -20,28 +20,28 @@
       </div>
     </transition>
     <div
-      class="transition-transform md:transform-none duration-300 ease-in-out transform -translate-x-64 fixed z-30 shadow-2xl md:shadow-none top-0 w-64 bg-gray-800 h-screen flex flex-col overflow-y-auto"
+      class="transition-transform md:transform-none duration-300 ease-in-out transform -translate-x-56 fixed z-30 shadow-2xl md:shadow-none top-0 w-56 md:w-64 bg-gray-800 h-screen flex flex-col overflow-y-auto"
       :class="{ 'transform-none': isDrawerVisible }"
     >
       <img
-        class="w-64 h-64"
+        class="w-56 h-56 md:w-64 md:h-64"
         alt="Miquel in the office"
         src="~/assets/images/miquel.jpg"
       />
       <div class="w-full h-px bg-gray-400"></div>
       <div class="font-display w-full text-center p-2">
-        <h1 class="text-gray-200 text-lg">
+        <h1 class="text-gray-200">
           Miquel Romero Sanfeliu
         </h1>
-        <h2 class="text-gray-400 text-lg lowercase font-light">
+        <h2 class="text-gray-400 lowercase font-mono">
           Frontend Developer
         </h2>
       </div>
-      <nav class="mt-4 lg:mt-8">
+      <nav class="mt-6 lg:mt-8">
         <ul class="w-full flex flex-col space-y-2">
           <li v-for="(page, itemIndex) in pages" :key="itemIndex">
             <NuxtLink
-              class="transition-shadow duration-300 ease-in-out font-display shadow-inline flex h-10 items-center text-gray-200 hover:shadow-inner"
+              class="transition-shadow duration-300 ease-in-out font-mono shadow-inline flex h-10 items-center text-gray-200 hover:shadow-inner"
               :class="`hover:bg-${page.color}-200 hover:text-${page.color}-800`"
               :active-class="`bg-${page.color}-200 text-${page.color}-800 shadow-sm hover:shadow-none`"
               exact
@@ -63,8 +63,9 @@
       class="w-full z-10 shadow-lg h-20 md:hidden fixed top-0 left-0 transition-all duration-300 ease-in-out"
     >
       <div class="h-full px-4 flex justify-between items-center">
-        <h1 class="text-2xl px-2 font-bold font-display flex-grow">
-          miquel.dev
+        <h1 class="px-2 flex-grow">
+          <span class="text-2xl font-display font-bold">miquel</span>
+          <span class="font-mono font-light text-lg">.dev</span>
         </h1>
         <button
           class="font-display text-lg p-2 lowercase focus:outline-none"

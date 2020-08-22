@@ -19,7 +19,7 @@ module.exports = {
     fontFamily: {
       display: ['Comfortaa', ...defaultTheme.fontFamily.sans],
       body: ['Montserrat', ...defaultTheme.fontFamily.sans],
-      // mono: ['Fira Code', ...defaultTheme.fontFamily.mono],
+      mono: ['Fira Code', ...defaultTheme.fontFamily.mono],
     },
   },
   variants: {},

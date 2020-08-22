@@ -54,7 +54,7 @@ export default {
         families: {
           Montserrat: [400],
           Comfortaa: [300, 400],
-          // 'Fira Code': [100, 200, 300, 400, 500, 600, 700, 800, 900],
+          'Fira Code': [100, 200, 300, 400, 500, 600, 700, 800, 900],
         },
       },
     ],
