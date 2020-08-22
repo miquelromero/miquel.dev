@@ -72,7 +72,13 @@ export default {
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
-  build: {},
+  build: {
+    splitChunks: {
+      layouts: false,
+      pages: false,
+      commons: true,
+    },
+  },
   router: {
     middleware: 'pageMeta',
   },
