@@ -2,9 +2,11 @@ button, a {
   -webkit-tap-highlight-color: transparent;
 }
 
-.page-down-enter-active,
+.page-down-enter-active {
+  @apply transition-all duration-500 ease-out;
+}
 .page-down-leave-active {
-  @apply transition-all duration-500 ease-in-out;
+  @apply transition-all duration-500 ease-in;
 }
 
 .page-down-enter {
@@ -16,9 +18,11 @@ button, a {
 }
 
 
-.page-up-enter-active,
+.page-up-enter-active {
+  @apply transition-all duration-500 ease-out;
+}
 .page-up-leave-active {
-  @apply transition-all duration-500 ease-in-out;
+  @apply transition-all duration-500 ease-in;
 }
 
 .page-up-enter {

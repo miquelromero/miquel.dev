@@ -1,6 +1,6 @@
 <template>
   <div
-    class="font-body transition-colors duration-1000 ease-in-out"
+    class="font-body transition-colors duration-1000"
     :class="`bg-${currentPage.color}-200`"
   >
     <transition
@@ -62,7 +62,7 @@
         [`bg-${currentPage.color}-100 text-${currentPage.color}-800`]: true,
         'shadow-none bg-opacity-0': atTopOfPage,
       }"
-      class="w-full z-10 shadow-lg h-20 md:hidden fixed top-0 left-0 transition-all duration-1000 ease-in-out"
+      class="w-full z-10 shadow-lg h-20 md:hidden fixed top-0 left-0 transition-all duration-1000"
     >
       <div class="h-full px-4 flex justify-between items-center">
         <h1 class="px-2 flex-grow">
@@ -81,7 +81,7 @@
       class="min-h-screen overflow-x-hidden md:ml-64 flex-grow flex flex-col"
     >
       <div class="pt-20 md:pt-0 flex flex-col flex-grow">
-        <main class="flex-grow">
+        <main class="flex-grow flex flex-col justify-center">
           <Nuxt class="m-4 p-8 rounded-lg shadow-md bg-white bg-opacity-75" />
         </main>
         <div class="flex">
