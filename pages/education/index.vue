@@ -6,8 +6,11 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import pageMixin from '@/mixins/page-mixin';
 
 export default Vue.extend({
+  mixins: [pageMixin],
+  scrollToTop: true,
   head() {
     return {
       title: 'Education of',

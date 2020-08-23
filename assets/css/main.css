@@ -1,3 +1,32 @@
 button, a {
   -webkit-tap-highlight-color: transparent;
 }
+
+.page-down-enter-active,
+.page-down-leave-active {
+  @apply transition-all duration-500 ease-in-out;
+}
+
+.page-down-enter {
+  @apply opacity-0 transform -translate-y-32;
+}
+
+.page-down-leave-to {
+  @apply opacity-0 transform translate-y-32;
+}
+
+
+.page-up-enter-active,
+.page-up-leave-active {
+  @apply transition-all duration-500 ease-in-out;
+}
+
+.page-up-enter {
+  @apply opacity-0 transform translate-y-32;
+}
+
+.page-up-leave-to {
+  @apply opacity-0 transform -translate-y-32;
+}
+
+

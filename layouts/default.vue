@@ -1,7 +1,7 @@
 <template>
   <div
-    class="font-body transition-colors duration-300 ease-in-out"
-    :class="`bg-${color}-200`"
+    class="font-body transition-colors duration-1000 ease-in-out"
+    :class="`bg-${currentPage.color}-200`"
   >
     <transition
       enter-active-class="transition-opacity duration-300 ease-in-out"
@@ -23,11 +23,13 @@
       class="transition-transform md:transform-none duration-300 ease-in-out transform -translate-x-56 fixed z-30 shadow-2xl md:shadow-none top-0 w-56 md:w-64 bg-gray-800 h-screen flex flex-col overflow-y-auto"
       :class="{ 'transform-none': isDrawerVisible }"
     >
-      <img
-        class="w-56 h-56 md:w-64 md:h-64"
-        alt="Miquel in the office"
-        src="~/assets/images/miquel.jpg"
-      />
+      <NuxtLink :to="{ name: 'index' }">
+        <img
+          class="w-56 h-56 md:w-64 md:h-64"
+          alt="Miquel in the office"
+          src="~/assets/images/miquel.jpg"
+        />
+      </NuxtLink>
       <div class="w-full h-px bg-gray-400"></div>
       <div class="font-display w-full text-center p-2">
         <h1 class="text-gray-200">
@@ -39,7 +41,7 @@
       </div>
       <nav class="mt-6 lg:mt-8">
         <ul class="w-full flex flex-col space-y-2">
-          <li v-for="(page, itemIndex) in pages" :key="itemIndex">
+          <li v-for="page in pages" :key="page.index">
             <NuxtLink
               class="transition-shadow duration-300 ease-in-out font-mono shadow-inline flex h-10 items-center text-gray-200 hover:shadow-inner"
               :class="`hover:bg-${page.color}-200 hover:text-${page.color}-800`"
@@ -57,10 +59,10 @@
     </div>
     <header
       :class="{
-        [`bg-${color}-100 text-${color}-800`]: true,
+        [`bg-${currentPage.color}-100 text-${currentPage.color}-800`]: true,
         'shadow-none bg-opacity-0': atTopOfPage,
       }"
-      class="w-full z-10 shadow-lg h-20 md:hidden fixed top-0 left-0 transition-all duration-300 ease-in-out"
+      class="w-full z-10 shadow-lg h-20 md:hidden fixed top-0 left-0 transition-shadow duration-300 ease-in-out"
     >
       <div class="h-full px-4 flex justify-between items-center">
         <h1 class="px-2 flex-grow">
@@ -80,21 +82,28 @@
     >
       <div class="pt-20 md:pt-0 flex flex-col flex-grow">
         <main class="flex-grow">
-          <transition
-            enter-active-class="transition-all duration-300 ease-in-out"
-            leave-active-class="transition-all duration-300 ease-in-out"
-            enter-class="opacity-0 transform translate-y-64"
-            enter-to-class="opacity-100 transform translate-y-0"
-            leave-class="opacity-100 transform translate-y-0"
-            leave-to-class="opacity-0 transform translate-y-64"
-            mode="out-in"
-          >
-            <Nuxt
-              class="m-4 p-8 rounded-lg shadow-md"
-              :class="`bg-${color}-100`"
-            />
-          </transition>
+          <Nuxt class="m-4 p-8 rounded-lg shadow-md bg-white bg-opacity-75" />
         </main>
+        <div class="flex">
+          <div class="w-1/2">
+            <NuxtLink
+              v-if="previousPage"
+              :to="{ name: previousPage.routeName }"
+              class="flex h-16 justify-center items-center"
+            >
+              <div>{{ previousPage.title }}</div>
+            </NuxtLink>
+          </div>
+          <div class="w-1/2 h-16">
+            <NuxtLink
+              v-if="nextPage"
+              :to="{ name: nextPage.routeName }"
+              class="flex h-16 justify-center items-center"
+            >
+              <div>{{ nextPage.title }}</div>
+            </NuxtLink>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -113,11 +122,14 @@ export default Vue.extend({
     };
   },
   computed: {
-    title() {
-      return this.$store.state.pageMeta.title;
+    currentPage() {
+      return this.$store.state.pageMeta;
     },
-    color() {
-      return this.$store.state.pageMeta.color;
+    nextPage() {
+      return pages[this.$store.state.pageMeta.index + 1];
+    },
+    previousPage() {
+      return pages[this.$store.state.pageMeta.index - 1];
     },
   },
   watch: {

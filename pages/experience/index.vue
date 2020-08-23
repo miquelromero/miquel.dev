@@ -10,8 +10,10 @@
 <script lang="ts">
 import Vue from 'vue';
 import experiences from '@/assets/profile/experiences';
+import pageMixin from '@/mixins/page-mixin';
 
 export default Vue.extend({
+  mixins: [pageMixin],
   data() {
     return {
       experiences,
