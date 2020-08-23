@@ -62,7 +62,7 @@
         [`bg-${currentPage.color}-100 text-${currentPage.color}-800`]: true,
         'shadow-none bg-opacity-0': atTopOfPage,
       }"
-      class="w-full z-10 shadow-lg h-20 md:hidden fixed top-0 left-0 transition-shadow duration-300 ease-in-out"
+      class="w-full z-10 shadow-lg h-20 md:hidden fixed top-0 left-0 transition-all duration-1000 ease-in-out"
     >
       <div class="h-full px-4 flex justify-between items-center">
         <h1 class="px-2 flex-grow">
@@ -134,6 +134,9 @@ export default Vue.extend({
   },
   watch: {
     $route() {
+      if (!this.atTopOfPage) {
+        this.atTopOfPage = true;
+      }
       if (this.isDrawerVisible) {
         this.isDrawerVisible = false;
       }
