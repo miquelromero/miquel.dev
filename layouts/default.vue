@@ -43,7 +43,7 @@
         <ul class="w-full flex flex-col space-y-2">
           <li v-for="page in pages" :key="page.index">
             <NuxtLink
-              class="transition-shadow duration-300 ease-in-out font-mono shadow-inline flex h-10 items-center text-gray-200 hover:shadow-inner"
+              class="transition-shadow duration-300 ease-in-out font-mono shadow-inline flex h-10 items-center text-gray-200"
               :class="`hover:bg-${page.color}-200 hover:text-${page.color}-800`"
               :active-class="`bg-${page.color}-200 text-${page.color}-800 shadow-sm hover:shadow-none`"
               exact
@@ -114,6 +114,16 @@ import Vue from 'vue';
 import pages from '@/assets/pages';
 
 export default Vue.extend({
+  head() {
+    return {
+      link: [
+        {
+          rel: 'canonical',
+          href: `https://miquel.dev${ this.$route.path === '/' ? '' : this.$route.path}`
+        }
+      ]
+    }
+  },
   data() {
     return {
       isDrawerVisible: false,
