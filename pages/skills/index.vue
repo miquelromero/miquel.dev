@@ -1,7 +1,5 @@
 <template>
-  <div class="">
-    WIP
-  </div>
+  <div class="">WIP</div>
 </template>
 
 <script lang="ts">
