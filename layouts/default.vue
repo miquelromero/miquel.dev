@@ -1,7 +1,7 @@
 <template>
   <div
     class="font-body transition-colors duration-1000"
-    :class="`bg-${currentPage.color}-200`"
+    :class="`bg-${currentPage.color}-300`"
   >
     <transition
       enter-active-class="transition-opacity duration-300 ease-in-out"
@@ -32,20 +32,16 @@
       </NuxtLink>
       <div class="w-full h-px bg-gray-400"></div>
       <div class="font-display w-full text-center p-2">
-        <h1 class="text-gray-200">
-          Miquel Romero Sanfeliu
-        </h1>
-        <h2 class="text-gray-400 lowercase font-mono">
-          Frontend Developer
-        </h2>
+        <h1 class="text-gray-200">Miquel Romero Sanfeliu</h1>
+        <h2 class="text-gray-400 lowercase font-mono">Frontend Developer</h2>
       </div>
       <nav class="mt-6 lg:mt-8">
         <ul class="w-full flex flex-col space-y-2">
           <li v-for="page in pages" :key="page.index">
             <NuxtLink
               class="transition-shadow duration-300 ease-in-out font-mono shadow-inline flex h-10 items-center text-gray-200"
-              :class="`hover:bg-${page.color}-200 hover:text-${page.color}-800`"
-              :active-class="`bg-${page.color}-200 text-${page.color}-800 shadow-sm hover:shadow-none`"
+              :class="`hover:bg-${page.color}-300 hover:text-${page.color}-900`"
+              :active-class="`bg-${page.color}-300 text-${page.color}-900 shadow-sm hover:shadow-none`"
               exact
               :to="{ name: page.routeName }"
             >
@@ -59,7 +55,7 @@
     </div>
     <header
       :class="{
-        [`bg-${currentPage.color}-100 text-${currentPage.color}-800`]: true,
+        [`bg-${currentPage.color}-300 text-${currentPage.color}-900`]: true,
         'shadow-none bg-opacity-0': atTopOfPage,
       }"
       class="w-full z-10 shadow-lg h-20 md:hidden fixed top-0 left-0 transition-all duration-1000"
@@ -84,26 +80,25 @@
         <main class="flex-grow flex flex-col justify-center">
           <Nuxt class="m-4 p-8 rounded-lg shadow-md bg-white bg-opacity-75" />
         </main>
-        <div class="flex">
-          <div class="w-1/2">
+        <transition
+          enter-active-class="transition-all duration-500 ease-out"
+          leave-active-class="transition-all duration-500 ease-in"
+          enter-class="opacity-0"
+          leave-to-class="opacity-0"
+          mode="out-in"
+        >
+          <div :key="nextPageNavigation.index" class="h-20 flex">
             <NuxtLink
-              v-if="previousPage"
-              :to="{ name: previousPage.routeName }"
-              class="flex h-16 justify-center items-center"
+              :to="{ name: nextPageNavigation.routeName }"
+              class="flex flex-grow items-center transition-colors duration-500"
+              :class="`md:hover:bg-${currentPage.color}-200 text-${currentPage.color}-900`"
             >
-              <div>{{ previousPage.title }}</div>
+              <div class="w-full font-display text-xl text-center lowercase">
+                {{ nextPageNavigation.longTitle }}
+              </div>
             </NuxtLink>
           </div>
-          <div class="w-1/2 h-16">
-            <NuxtLink
-              v-if="nextPage"
-              :to="{ name: nextPage.routeName }"
-              class="flex h-16 justify-center items-center"
-            >
-              <div>{{ nextPage.title }}</div>
-            </NuxtLink>
-          </div>
-        </div>
+        </transition>
       </div>
     </div>
   </div>
@@ -111,19 +106,9 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import pages from '@/assets/pages';
+import pages, { Page } from '@/assets/pages';
 
 export default Vue.extend({
-  head() {
-    return {
-      link: [
-        {
-          rel: 'canonical',
-          href: `https://miquel.dev${ this.$route.path === '/' ? '' : this.$route.path}`
-        }
-      ]
-    }
-  },
   data() {
     return {
       isDrawerVisible: false,
@@ -132,14 +117,17 @@ export default Vue.extend({
     };
   },
   computed: {
-    currentPage() {
+    firstPage(): Page {
+      return pages[0];
+    },
+    currentPage(): Page {
       return this.$store.state.pageMeta;
     },
-    nextPage() {
+    nextPage(): Page {
       return pages[this.$store.state.pageMeta.index + 1];
     },
-    previousPage() {
-      return pages[this.$store.state.pageMeta.index - 1];
+    nextPageNavigation(): Page {
+      return this.nextPage || this.firstPage;
     },
   },
   watch: {
@@ -180,6 +168,18 @@ export default Vue.extend({
         this.atTopOfPage = true;
       }
     },
+  },
+  head() {
+    return {
+      link: [
+        {
+          rel: 'canonical',
+          href: `https://miquel.dev${
+            this.$route.path === '/' ? '' : this.$route.path
+          }`,
+        },
+      ],
+    };
   },
 });
 </script>

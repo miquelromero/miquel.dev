@@ -1,6 +1,7 @@
-interface Page {
+export interface Page {
   index: number;
   title: string;
+  longTitle: string;
   color: string;
   routeName: string;
 }
@@ -8,37 +9,43 @@ interface Page {
 const pages: Page[] = [
   {
     index: 0,
-    title: 'About',
+    title: 'About me',
+    longTitle: 'Go back to top',
     color: 'green',
     routeName: 'index',
   },
   {
     index: 1,
     title: 'Experience',
+    longTitle: 'Check my experience',
     color: 'blue',
     routeName: 'experience',
   },
   {
     index: 2,
     title: 'Projects',
+    longTitle: 'Take a look at my projects',
     color: 'orange',
     routeName: 'projects',
   },
   {
     index: 3,
     title: 'Skills',
+    longTitle: 'See my skills',
     color: 'teal',
     routeName: 'skills',
   },
   {
     index: 4,
     title: 'Education',
+    longTitle: 'Know about my education',
     color: 'yellow',
     routeName: 'education',
   },
   {
     index: 5,
     title: 'Contact',
+    longTitle: 'Contact me',
     color: 'purple',
     routeName: 'contact',
   },
