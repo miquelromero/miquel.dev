@@ -30,11 +30,12 @@ module.exports = {
     options: {
       whitelist: colors.flatMap((color) => [
         `bg-${color}-100`,
-        `bg-${color}-200`,
-        `bg-${color}-800`,
+        `bg-${color}-300`,
+        `bg-${color}-900`,
         `hover:bg-${color}-200`,
-        `hover:text-${color}-800`,
-        `text-${color}-800`,
+        `hover:bg-${color}-300`,
+        `hover:text-${color}-900`,
+        `text-${color}-900`,
       ]),
     },
     content: [
