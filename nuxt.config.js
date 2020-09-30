@@ -34,7 +34,7 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: [],
+  plugins: ['@/plugins/vue-touch-events.ts'],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -52,8 +52,8 @@ export default {
       '@nuxtjs/google-fonts',
       {
         families: {
-          Montserrat: [400],
-          Comfortaa: [300, 400],
+          Montserrat: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+          Comfortaa: [100, 200, 300, 400, 500, 600, 700, 800, 900],
           'Fira Code': [100, 200, 300, 400, 500, 600, 700, 800, 900],
         },
       },
@@ -62,6 +62,17 @@ export default {
       '@nuxtjs/google-analytics',
       {
         id: 'UA-176283816-1',
+      },
+    ],
+    [
+      'nuxt-fontawesome',
+      {
+        imports: [
+          {
+            set: '@fortawesome/free-solid-svg-icons',
+            icons: ['faChevronUp', 'faChevronDown'],
+          },
+        ],
       },
     ],
   ],

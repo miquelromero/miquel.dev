@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    WIP
+    <h1 class="text-2xl sm:text-4xl mb-4">Contact me</h1>
   </div>
 </template>
 

@@ -10,7 +10,7 @@ const pages: Page[] = [
   {
     index: 0,
     title: 'About me',
-    longTitle: 'Go back to top',
+    longTitle: '',
     color: 'green',
     routeName: 'index',
   },
@@ -23,17 +23,17 @@ const pages: Page[] = [
   },
   {
     index: 2,
-    title: 'Projects',
-    longTitle: 'Take a look at my projects',
+    title: 'Skills',
+    longTitle: 'See my skills',
     color: 'orange',
-    routeName: 'projects',
+    routeName: 'skills',
   },
   {
     index: 3,
-    title: 'Skills',
-    longTitle: 'See my skills',
+    title: 'Projects',
+    longTitle: 'Take a look at my projects',
     color: 'teal',
-    routeName: 'skills',
+    routeName: 'projects',
   },
   {
     index: 4,

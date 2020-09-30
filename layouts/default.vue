@@ -1,7 +1,12 @@
 <template>
   <div
+    v-touch:swipe.left="closeDrawer"
+    v-touch:swipe.right="openDrawer"
+    v-touch:swipe.bottom="onSwipeBottom"
+    v-touch:swipe.top="onSwipeTop"
+    v-touch:start="onTouchStart"
     class="font-body transition-colors duration-1000"
-    :class="`bg-${currentPage.color}-300`"
+    :class="`bg-${currentPage.color}-300 text-${currentPage.color}-900`"
   >
     <transition
       enter-active-class="transition-opacity duration-300 ease-in-out"
@@ -55,8 +60,8 @@
     </div>
     <header
       :class="{
-        [`bg-${currentPage.color}-300 text-${currentPage.color}-900`]: true,
-        'shadow-none bg-opacity-0': atTopOfPage,
+        [`bg-${currentPage.color}-300`]: true,
+        'shadow-none bg-opacity-0': isAtTop,
       }"
       class="w-full z-10 shadow-lg h-20 md:hidden fixed top-0 left-0 transition-all duration-1000"
     >
@@ -77,28 +82,35 @@
       class="min-h-screen overflow-x-hidden md:ml-64 flex-grow flex flex-col"
     >
       <div class="pt-20 md:pt-0 flex flex-col flex-grow">
-        <main class="flex-grow flex flex-col justify-center">
-          <Nuxt class="m-4 p-8 rounded-lg shadow-md bg-white bg-opacity-75" />
+        <main class="flex-grow flex flex-col justify-center overflow-hidden">
+          <Nuxt class="m-4 sm:m-8" />
         </main>
-        <transition
-          enter-active-class="transition-all duration-500 ease-out"
-          leave-active-class="transition-all duration-500 ease-in"
-          enter-class="opacity-0"
-          leave-to-class="opacity-0"
-          mode="out-in"
-        >
-          <div :key="nextPageNavigation.index" class="h-20 flex">
-            <NuxtLink
-              :to="{ name: nextPageNavigation.routeName }"
-              class="flex flex-grow items-center transition-colors duration-500"
-              :class="`md:hover:bg-${currentPage.color}-200 text-${currentPage.color}-900`"
-            >
-              <div class="w-full font-display text-xl text-center lowercase">
-                {{ nextPageNavigation.longTitle }}
-              </div>
-            </NuxtLink>
-          </div>
-        </transition>
+        <div class="h-20">
+          <transition
+            enter-active-class="transition-all duration-500 ease-out"
+            leave-active-class="transition-all duration-500 ease-in"
+            enter-class="opacity-0"
+            leave-to-class="opacity-0"
+            mode="out-in"
+          >
+            <div v-if="nextPage" :key="nextPage.index" class="flex h-full">
+              <NoSsr>
+                <NuxtLink
+                  :to="{ name: nextPage.routeName }"
+                  class="flex flex-grow items-center transition-colors duration-500"
+                  :class="`text-${currentPage.color}-900`"
+                >
+                  <div
+                    class="w-full flex flex-col items-center text-xl text-center lowercase"
+                  >
+                    <font-awesome-icon icon="chevron-up" />
+                    {{ nextPage.longTitle }}
+                  </div>
+                </NuxtLink>
+              </NoSsr>
+            </div>
+          </transition>
+        </div>
       </div>
     </div>
   </div>
@@ -108,12 +120,28 @@
 import Vue from 'vue';
 import pages, { Page } from '@/assets/pages';
 
+interface Data {
+  isDrawerVisible: Boolean;
+  isAtTop: Boolean;
+  isAtBottom: Boolean;
+  wasAtTop?: Boolean;
+  wasAtBottom?: Boolean;
+  pages: Page[];
+  ongoingWheel: Boolean;
+  ongoingWheelTimeout?: NodeJS.Timeout;
+}
+
 export default Vue.extend({
-  data() {
+  data(): Data {
     return {
       isDrawerVisible: false,
-      atTopOfPage: true,
+      isAtTop: true,
+      isAtBottom: false,
+      wasAtTop: undefined,
+      wasAtBottom: undefined,
       pages,
+      ongoingWheel: false,
+      ongoingWheelTimeout: undefined,
     };
   },
   computed: {
@@ -123,18 +151,19 @@ export default Vue.extend({
     currentPage(): Page {
       return this.$store.state.pageMeta;
     },
+    previousPage(): Page {
+      return pages[this.$store.state.pageMeta.index - 1];
+    },
     nextPage(): Page {
       return pages[this.$store.state.pageMeta.index + 1];
     },
-    nextPageNavigation(): Page {
-      return this.nextPage || this.firstPage;
+    isLastPage(): boolean {
+      return this.currentPage.index === pages.length - 1;
     },
   },
   watch: {
     $route() {
-      if (!this.atTopOfPage) {
-        this.atTopOfPage = true;
-      }
+      this.handleScroll();
       if (this.isDrawerVisible) {
         this.isDrawerVisible = false;
       }
@@ -149,10 +178,12 @@ export default Vue.extend({
   },
   mounted() {
     window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('wheel', this.handleWheel);
     this.handleScroll();
   },
   beforeDestroy() {
     window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('wheel', this.handleWheel);
   },
   methods: {
     closeDrawer() {
@@ -161,11 +192,79 @@ export default Vue.extend({
     openDrawer() {
       this.isDrawerVisible = true;
     },
+    onTouchStart() {
+      this.wasAtTop = this.getIsAtTop();
+      this.wasAtBottom = this.getIsAtBottom();
+    },
+    onSwipeTop() {
+      this.handleScroll();
+      if (this.isAtBottom && this.wasAtBottom) {
+        this.navigateToNextPage();
+      }
+    },
+    onSwipeBottom() {
+      this.handleScroll();
+      if (this.isAtTop && this.wasAtTop) {
+        this.navigateToPreviousPage();
+      }
+    },
+    navigateToNextPage() {
+      if (this.nextPage) {
+        this.$router.push({ name: this.nextPage.routeName });
+      }
+    },
+    navigateToPreviousPage() {
+      if (this.previousPage) {
+        this.$router.push({ name: this.previousPage.routeName });
+      }
+    },
+    getIsAtTop(): boolean {
+      return window.scrollY === 0;
+    },
+    getIsAtBottom(): boolean {
+      return (
+        Math.ceil(window.pageYOffset) + window.innerHeight >=
+        document.body.scrollHeight
+      );
+    },
     handleScroll() {
-      if (window.pageYOffset > 0) {
-        if (this.atTopOfPage) this.atTopOfPage = false;
-      } else if (!this.atTopOfPage) {
-        this.atTopOfPage = true;
+      const isAtTop = this.getIsAtTop();
+      if (isAtTop && !this.isAtTop) {
+        this.isAtTop = true;
+      } else if (!isAtTop && this.isAtTop) {
+        this.isAtTop = false;
+      }
+      const isAtBottom = this.getIsAtBottom();
+
+      if (isAtBottom && !this.isAtBottom) {
+        this.isAtBottom = true;
+      } else if (!isAtBottom && this.isAtBottom) {
+        this.isAtBottom = false;
+      }
+    },
+    preventMultipleWheelEvents() {
+      if (this.ongoingWheelTimeout !== undefined) {
+        clearTimeout(this.ongoingWheelTimeout);
+      }
+      this.ongoingWheelTimeout = setTimeout(() => {
+        this.ongoingWheel = false;
+      }, 200);
+    },
+    handleWheel(event: WheelEvent) {
+      this.handleScroll();
+      if (event.ctrlKey || (event.deltaY < 30 && event.deltaY > -30)) {
+        return;
+      }
+      this.preventMultipleWheelEvents();
+      if (this.ongoingWheel) {
+        return;
+      } else {
+        this.ongoingWheel = true;
+      }
+      if (event.deltaY < 0 && this.isAtTop && this.previousPage) {
+        this.$router.push({ name: this.previousPage.routeName });
+      } else if (event.deltaY > 0 && this.nextPage && this.isAtBottom) {
+        this.$router.push({ name: this.nextPage.routeName });
       }
     },
   },

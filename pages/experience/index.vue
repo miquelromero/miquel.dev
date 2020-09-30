@@ -1,8 +1,14 @@
 <template>
-  <div class="space-y-8">
-    <div v-for="(experience, index) in experiences" :key="index" class="">
-      {{ experience.title }}
-      {{ experience.description }}
+  <div class="text-center">
+    <h1 class="text-2xl sm:text-4xl mb-4">
+      These are my <span class="font-semibold">professional experiences</span>
+    </h1>
+    <div class="space-y-8">
+      <div v-for="(experience, index) in experiences" :key="index" class="">
+        {{ experience.title }}
+        {{ experience.description }}
+        <br />
+      </div>
     </div>
   </div>
 </template>
