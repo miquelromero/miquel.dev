@@ -3,7 +3,7 @@ export default {
    ** Nuxt rendering mode
    ** See https://nuxtjs.org/api/configuration-mode
    */
-  mode: process.env.NODE_ENV === 'production' ? 'universal' : 'spa',
+  mode: process.env.NODE_ENV === 'production' ? 'universal' : 'universal',
   /*
    ** Nuxt target
    ** See https://nuxtjs.org/api/configuration-target
@@ -52,7 +52,6 @@ export default {
       '@nuxtjs/google-fonts',
       {
         families: {
-          Montserrat: [100, 200, 300, 400, 500, 600, 700, 800, 900],
           Comfortaa: [100, 200, 300, 400, 500, 600, 700, 800, 900],
           'Fira Code': [100, 200, 300, 400, 500, 600, 700, 800, 900],
         },

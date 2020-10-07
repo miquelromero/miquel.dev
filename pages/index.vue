@@ -1,12 +1,12 @@
 <template>
   <div class="text-center">
     <h1 class="text-3xl sm:text-5xl mb-4">
-      Hi, it's <span class="font-semibold">Miquel</span> 👋
+      Hi, it's <span class="font-bold">Miquel</span> 👋
     </h1>
     <p class="text-xl sm:text-3xl">
-      I am a <span class="font-semibold">Frontend Developer</span> located in
-      Girona (<span class="font-semibold">Barcelona</span>) specialized in
-      <span class="font-semibold">Vue.js</span>
+      I am a <span class="font-bold">Frontend Developer</span> located in Girona
+      (<span class="font-bold">Barcelona</span>) specialized in
+      <span class="font-bold">Vue.js</span>
     </p>
   </div>
 </template>

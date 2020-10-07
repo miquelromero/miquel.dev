@@ -1,12 +1,13 @@
 <template>
   <div
+    ref="container"
     v-touch:swipe.left="closeDrawer"
     v-touch:swipe.right="openDrawer"
     v-touch:swipe.bottom="onSwipeBottom"
     v-touch:swipe.top="onSwipeTop"
     v-touch:start="onTouchStart"
-    class="font-body transition-colors duration-1000"
-    :class="`bg-${currentPage.color}-300 text-${currentPage.color}-900`"
+    :style="containerStyle"
+    class="font-body bg-primary-300 text-primary-900 overflow-y-scroll h-screen w-screen transition-colors duration-1000"
   >
     <transition
       enter-active-class="transition-opacity duration-300 ease-in-out"
@@ -18,7 +19,7 @@
     >
       <div
         v-show="isDrawerVisible"
-        class="md:hidden z-20 w-screen h-screen fixed"
+        class="md:hidden z-30 w-screen h-screen fixed"
         @click="closeDrawer"
       >
         <div class="w-full h-full bg-black opacity-50"></div>
@@ -36,7 +37,7 @@
         />
       </NuxtLink>
       <div class="w-full h-px bg-gray-400"></div>
-      <div class="font-display w-full text-center p-2">
+      <div class="w-full text-center p-2">
         <h1 class="text-gray-200">Miquel Romero Sanfeliu</h1>
         <h2 class="text-gray-400 lowercase font-mono">Frontend Developer</h2>
       </div>
@@ -59,19 +60,16 @@
       </nav>
     </div>
     <header
-      :class="{
-        [`bg-${currentPage.color}-300`]: true,
-        'shadow-none bg-opacity-0': isAtTop,
-      }"
-      class="w-full z-10 shadow-lg h-20 md:hidden fixed top-0 left-0 transition-all duration-1000"
+      :class="isAtTop ? 'shadow-none bg-primary-300' : 'bg-primary-200'"
+      class="w-full z-20 shadow-lg h-20 md:hidden fixed top-0 left-0 transition-all duration-1000"
     >
       <div class="h-full px-4 flex justify-between items-center">
         <h1 class="px-2 flex-grow">
-          <span class="text-2xl font-display font-bold">miquel</span>
+          <span class="text-2xl font-bold">miquel</span>
           <span class="font-mono font-light text-lg">.dev</span>
         </h1>
         <button
-          class="font-display text-lg p-2 lowercase focus:outline-none"
+          class="text-lg p-2 lowercase focus:outline-none"
           @click="openDrawer"
         >
           Menu
@@ -97,11 +95,10 @@
               <NoSsr>
                 <NuxtLink
                   :to="{ name: nextPage.routeName }"
-                  class="flex flex-grow items-center transition-colors duration-500"
-                  :class="`text-${currentPage.color}-900`"
+                  class="flex text-primary-900 flex-grow items-center transition-colors duration-500"
                 >
                   <div
-                    class="w-full flex flex-col items-center text-xl text-center lowercase"
+                    class="w-full flex flex-col items-center text-xl lowercase"
                   >
                     <font-awesome-icon icon="chevron-up" />
                     {{ nextPage.longTitle }}
@@ -119,6 +116,9 @@
 <script lang="ts">
 import Vue from 'vue';
 import pages, { Page } from '@/assets/pages';
+const {
+  theme: { colors },
+} = require('tailwindcss/lib/flagged/uniformColorPalette').default;
 
 interface Data {
   isDrawerVisible: Boolean;
@@ -160,6 +160,16 @@ export default Vue.extend({
     isLastPage(): boolean {
       return this.currentPage.index === pages.length - 1;
     },
+    containerStyle(): any {
+      const shades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
+      return shades.reduce(
+        (acc: any, shade: number) => ({
+          ...acc,
+          [`--color-primary-${shade}`]: colors[this.currentPage.color][shade],
+        }),
+        {}
+      );
+    },
   },
   watch: {
     $route() {
@@ -177,13 +187,13 @@ export default Vue.extend({
     },
   },
   mounted() {
-    window.addEventListener('scroll', this.handleScroll);
-    window.addEventListener('wheel', this.handleWheel);
+    this.$refs.container.addEventListener('scroll', this.handleScroll);
+    this.$refs.container.addEventListener('wheel', this.handleWheel);
     this.handleScroll();
   },
   beforeDestroy() {
-    window.removeEventListener('scroll', this.handleScroll);
-    window.removeEventListener('wheel', this.handleWheel);
+    this.$refs.container.removeEventListener('scroll', this.handleScroll);
+    this.$refs.container.removeEventListener('wheel', this.handleWheel);
   },
   methods: {
     closeDrawer() {
@@ -219,12 +229,13 @@ export default Vue.extend({
       }
     },
     getIsAtTop(): boolean {
-      return window.scrollY === 0;
+      return this.$refs.container.scrollTop === 0;
     },
     getIsAtBottom(): boolean {
       return (
-        Math.ceil(window.pageYOffset) + window.innerHeight >=
-        document.body.scrollHeight
+        Math.ceil(this.$refs.container.scrollTop) +
+          this.$refs.container.offsetHeight >=
+        this.$refs.container.scrollHeight
       );
     },
     handleScroll() {
