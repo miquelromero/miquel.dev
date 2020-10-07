@@ -3,7 +3,7 @@ export default {
    ** Nuxt rendering mode
    ** See https://nuxtjs.org/api/configuration-mode
    */
-  mode: process.env.NODE_ENV === 'production' ? 'universal' : 'universal',
+  mode: process.env.NODE_ENV === 'production' ? 'universal' : 'spa',
   /*
    ** Nuxt target
    ** See https://nuxtjs.org/api/configuration-target

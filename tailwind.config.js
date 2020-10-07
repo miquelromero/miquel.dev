@@ -1,4 +1,6 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+const pages = require('./assets/pages').default;
+const colors = pages.map((page) => page.color);
 
 /*
  ** TailwindCSS Configuration File
@@ -40,6 +42,14 @@ module.exports = {
   purge: {
     // Learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css
     enabled: process.env.NODE_ENV === 'production',
+    options: {
+      whitelist: colors.flatMap((color) => [
+        `bg-${color}-300`,
+        `hover:bg-${color}-300`,
+        `text-${color}-900`,
+        `hover:text-${color}-900`,
+      ]),
+    },
     content: [
       'components/**/*.vue',
       'layouts/**/*.vue',
