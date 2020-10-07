@@ -1,24 +1,144 @@
-interface Experience {
-  title: string;
+interface MonthAndYear {
+  month: number;
+  year: number;
+}
+
+interface Company {
+  name: string;
+  website: string | null;
+  logo: string | null;
+}
+
+export interface Experience {
+  company: Company;
+  role: string;
+  from: MonthAndYear;
+  to: MonthAndYear | null;
   description: string;
 }
 
 const experiences: Experience[] = [
   {
-    title: 'Tembeza',
-    description: 'bets',
+    company: {
+      name: 'Tembeza',
+      website: 'https://www.tembeza.com',
+      logo: '/images/companies/tembeza.png',
+    },
+    role: 'Senior Frontend Developer',
+    description:
+      'Frontend development of a well tested big Vue.js application.',
+    from: {
+      month: 6,
+      year: 2020,
+    },
+    to: null,
   },
   {
-    title: 'Passnfly',
-    description: 'planes',
+    company: {
+      name: 'Passnfly',
+      website: 'http://www.passnfly.com',
+      logo: '/images/companies/passnfly.png',
+    },
+    role: 'Senior Frontend Developer',
+    description:
+      'Frontend development with Vue.js. Leading a product migration to a modern stack (Webpack + Vue).',
+    from: {
+      month: 9,
+      year: 2019,
+    },
+    to: {
+      month: 6,
+      year: 2029,
+    },
   },
   {
-    title: 'Housfy',
-    description: 'houses',
+    company: {
+      name: 'Housfy',
+      website: 'http://www.passnfly.com',
+      logo: '/images/companies/housfy.png',
+    },
+    role: 'Senior Frontend Developer',
+    description:
+      'Frontend development with Vue.js and Laravel. E2E testing with Cypress.',
+    from: {
+      month: 5,
+      year: 2019,
+    },
+    to: {
+      month: 7,
+      year: 2029,
+    },
   },
   {
-    title: 'Cetrea',
-    description: 'hospitals',
+    company: {
+      name: 'Getinge Cetrea A/S',
+      website: 'http://www.cetrea.com',
+      logo: '/images/companies/getinge.png',
+    },
+    role: 'Frontend Developer',
+    description:
+      'Frontend developer –taking the role of Feature Lead for some projects— as part of a globally distributed team responsible of the development of a healthcare solution meant for optimizing the patient flow. Despite of being mainly focused on the frontend (AngularJS), a lot of backend tasks (Java) have been done, together with some side projects with Node.js and other modern JS frameworks (Vue.js).',
+    from: {
+      month: 7,
+      year: 2016,
+    },
+    to: {
+      month: 5,
+      year: 2019,
+    },
+  },
+  {
+    company: {
+      name: 'HPE CDS',
+      website: 'https://www.hpecds.com/',
+      logo: '/images/companies/hpecds.png',
+    },
+    role: 'Business Application Engineer',
+    description:
+      'Financial web services back-end (mainly) and front-end development with the ABSIS TF7 architecture (Java EE).',
+    from: {
+      month: 5,
+      year: 2015,
+    },
+    to: {
+      month: 7,
+      year: 2016,
+    },
+  },
+  {
+    company: {
+      name: 'Hermes Comunicacions',
+      website: 'https://www.linkedin.com/company/hermes-comunicacions/about/',
+      logo: '/images/companies/hermes.png',
+    },
+    role: 'Junior Software Developer',
+    description:
+      'Analysis and development of Joomla components (PHP + MySQL + HTML + jQuery), database design (MySQL), data transformation with ETL tools (Pentaho).',
+    from: {
+      month: 7,
+      year: 2014,
+    },
+    to: {
+      month: 4,
+      year: 2015,
+    },
+  },
+  {
+    company: {
+      name: 'Dipsalut',
+      website: 'https://www.dipsalut.cat',
+      logo: '/images/companies/dipsalut.jpg',
+    },
+    role: 'Associate in Department of information management for quality',
+    description: 'SQL, Business Intelligence reports, technical support.',
+    from: {
+      month: 10,
+      year: 2012,
+    },
+    to: {
+      month: 5,
+      year: 2013,
+    },
   },
 ];
 
