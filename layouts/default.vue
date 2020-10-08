@@ -64,23 +64,22 @@
       class="w-full z-20 shadow-lg h-20 md:hidden fixed top-0 left-0 transition-all duration-1000"
     >
       <div class="h-full px-4 flex justify-between items-center">
-        <h1 class="px-2 flex-grow">
-          <Transition
-            enter-active-class="transition-opacity duration-500 ease-in-out"
-            leave-active-class="transition-opacity duration-500 ease-in-out"
-            enter-class="opacity-0"
-            enter-to-class="opacity-100"
-            leave-class="opacity-100"
-            leave-to-class="opacity-0"
-            mode="out-in"
+        <Transition
+          enter-active-class="transition-opacity duration-500 ease-in-out"
+          leave-active-class="transition-opacity duration-500 ease-in-out"
+          enter-class="opacity-0"
+          enter-to-class="opacity-100"
+          leave-class="opacity-100"
+          leave-to-class="opacity-0"
+          mode="out-in"
+        >
+          <h1
+            :key="currentPage.index"
+            class="px-2 flex-grow text-2xl font-bold lowercase"
           >
-            <span
-              :key="currentPage.title"
-              class="text-2xl font-bold lowercase"
-              >{{ currentPage.title }}</span
-            >
-          </Transition>
-        </h1>
+            {{ currentPage.title }}
+          </h1>
+        </Transition>
         <button
           class="text-lg p-2 lowercase focus:outline-none"
           @click="openDrawer"
