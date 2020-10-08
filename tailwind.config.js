@@ -44,8 +44,8 @@ module.exports = {
     enabled: process.env.NODE_ENV === 'production',
     options: {
       whitelist: colors.flatMap((color) => [
-        `bg-${color}-300`,
-        `hover:bg-${color}-300`,
+        `bg-${color}-200`,
+        `hover:bg-${color}-200`,
         `text-${color}-900`,
         `hover:text-${color}-900`,
       ]),
