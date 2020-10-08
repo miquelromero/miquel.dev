@@ -1,9 +1,11 @@
-interface MonthAndYear {
+import { tags, Tag } from './tags';
+
+export interface MonthAndYear {
   month: number;
   year: number;
 }
 
-interface Company {
+export interface Company {
   name: string;
   website: string | null;
   logo: string | null;
@@ -15,6 +17,7 @@ export interface Experience {
   from: MonthAndYear;
   to: MonthAndYear | null;
   description: string;
+  tags: Tag[];
 }
 
 const experiences: Experience[] = [
@@ -32,12 +35,13 @@ const experiences: Experience[] = [
       year: 2020,
     },
     to: null,
+    tags: [tags.VUE, tags.JS],
   },
   {
     company: {
       name: 'Passnfly',
       website: 'http://www.passnfly.com',
-      logo: '/images/companies/passnfly.png',
+      logo: '/images/companies/passnfly.svg',
     },
     role: 'Senior Frontend Developer',
     description:
@@ -48,13 +52,14 @@ const experiences: Experience[] = [
     },
     to: {
       month: 6,
-      year: 2029,
+      year: 2019,
     },
+    tags: [tags.VUE, tags.JS, tags.TS],
   },
   {
     company: {
       name: 'Housfy',
-      website: 'http://www.passnfly.com',
+      website: 'http://www.housfy.com',
       logo: '/images/companies/housfy.png',
     },
     role: 'Senior Frontend Developer',
@@ -66,8 +71,9 @@ const experiences: Experience[] = [
     },
     to: {
       month: 7,
-      year: 2029,
+      year: 2019,
     },
+    tags: [tags.VUE, tags.PHP, tags.JS],
   },
   {
     company: {
@@ -86,6 +92,7 @@ const experiences: Experience[] = [
       month: 5,
       year: 2019,
     },
+    tags: [tags.ANGULAR, tags.JAVA, tags.JS, tags.TS],
   },
   {
     company: {
@@ -104,6 +111,7 @@ const experiences: Experience[] = [
       month: 7,
       year: 2016,
     },
+    tags: [tags.JAVA],
   },
   {
     company: {
@@ -122,6 +130,7 @@ const experiences: Experience[] = [
       month: 4,
       year: 2015,
     },
+    tags: [tags.JS, tags.PHP, tags.JQUERY],
   },
   {
     company: {
@@ -139,6 +148,7 @@ const experiences: Experience[] = [
       month: 5,
       year: 2013,
     },
+    tags: [],
   },
 ];
 

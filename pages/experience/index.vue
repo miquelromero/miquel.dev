@@ -1,7 +1,7 @@
 <template>
-  <div class="">
-    <h1 class="text-center text-2xl sm:text-4xl mb-4">
-      These are my <span class="font-bold">professional experiences</span>
+  <div class="flex-grow">
+    <h1 class="text-center text-2xl sm:text-4xl mb-4 font-bold uppercase">
+      Professional experience
     </h1>
     <ExperienceList :experiences="experiences" />
   </div>
@@ -11,7 +11,7 @@
 import Vue from 'vue';
 import experiences from '@/assets/profile/experiences';
 import pageMixin from '@/mixins/page-mixin';
-import ExperienceList from '@/components/ExperienceList.vue';
+import ExperienceList from '@/components/experience/ExperienceList.vue';
 
 export default Vue.extend({
   components: {

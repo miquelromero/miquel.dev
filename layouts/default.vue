@@ -9,7 +9,7 @@
     :style="containerStyle"
     class="font-body bg-primary-300 text-primary-900 overflow-y-scroll h-screen w-screen transition-colors duration-1000"
   >
-    <transition
+    <Transition
       enter-active-class="transition-opacity duration-300 ease-in-out"
       leave-active-class="transition-opacity duration-300 ease-in-out"
       enter-class="opacity-0"
@@ -24,7 +24,7 @@
       >
         <div class="w-full h-full bg-black opacity-50"></div>
       </div>
-    </transition>
+    </Transition>
     <div
       class="transition-transform md:transform-none duration-300 ease-in-out transform -translate-x-56 fixed z-30 shadow-2xl md:shadow-none top-0 w-56 md:w-64 bg-gray-800 h-screen flex flex-col overflow-y-auto"
       :class="{ 'transform-none': isDrawerVisible }"
@@ -187,8 +187,12 @@ export default Vue.extend({
     },
   },
   mounted() {
-    this.$refs.container.addEventListener('scroll', this.handleScroll);
-    this.$refs.container.addEventListener('wheel', this.handleWheel);
+    this.$refs.container.addEventListener('scroll', this.handleScroll, {
+      passive: true,
+    });
+    this.$refs.container.addEventListener('wheel', this.handleWheel, {
+      passive: true,
+    });
     this.handleScroll();
   },
   beforeDestroy() {
