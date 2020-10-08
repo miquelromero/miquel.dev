@@ -55,23 +55,23 @@
           class="rounded-lg transition-all duration-1000 bg-primary-100"
           :class="{ 'opacity-0 duration-500': isDisabled }"
         >
-          <CollapseTransition :duration="500">
-            <div v-if="!isDisabled">
-              <div class="px-6 py-4 text-sm">{{ experience.description }}</div>
-              <div v-if="experience.tags.length > 0" class="px-6 pt-4 pb-2">
-                <ExperienceTag
-                  v-for="tag in experience.tags"
-                  :key="tag.tag"
-                  :tag="tag"
-                  :fixed-tag="fixedTag"
-                  :highlighted-tag="highlightedTag"
-                  read-only
-                  @highlight="$emit('highlight-tag', $event)"
-                  @fix="$emit('fix-tag', $event)"
-                />
-              </div>
+          <!--<CollapseTransition :duration="500">-->
+          <div v-if="!isDisabled">
+            <div class="px-6 py-4 text-sm">{{ experience.description }}</div>
+            <div v-if="experience.tags.length > 0" class="px-6 pt-4 pb-2">
+              <ExperienceTag
+                v-for="tag in experience.tags"
+                :key="tag.tag"
+                :tag="tag"
+                :fixed-tag="fixedTag"
+                :highlighted-tag="highlightedTag"
+                read-only
+                @highlight="$emit('highlight-tag', $event)"
+                @fix="$emit('fix-tag', $event)"
+              />
             </div>
-          </CollapseTransition>
+          </div>
+          <!--</CollapseTransition>-->
         </div>
       </div>
     </div>
@@ -85,15 +85,17 @@ import ExperienceTag from '@/components/experience/ExperienceTag.vue';
 import { format } from 'date-fns';
 import { Tag } from '~/assets/profile/tags';
 
+/**
 const CollapseTransition = Vue.extend(
   require('@ivanv/vue-collapse-transition').CollapseTransition
 );
+*/
 
 export default Vue.extend({
   name: 'ExperienceListItem',
   components: {
     ExperienceTag,
-    CollapseTransition,
+    // CollapseTransition,
   },
   props: {
     experience: {
