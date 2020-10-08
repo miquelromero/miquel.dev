@@ -23,6 +23,7 @@
           :experience="experience"
           :fixed-tag="fixedTag"
           :highlighted-tag="highlightedTag"
+          :show-bar="index !== experiences.length - 1"
           @highlight-tag="onHighlightTag"
           @fix-tag="onFixTag"
         />

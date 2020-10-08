@@ -1,8 +1,5 @@
 <template>
   <div class="flex-grow">
-    <h1 class="text-center text-2xl sm:text-4xl mb-4 font-bold uppercase">
-      Professional experience
-    </h1>
     <ExperienceList :experiences="experiences" />
   </div>
 </template>

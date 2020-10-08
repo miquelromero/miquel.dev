@@ -13,17 +13,18 @@
           :rel="experience.company.website ? 'noopener' : undefined"
         >
           <img
-            class="bg-white transition-colors duration-1000 border-primary-900 border-4 rounded-full h-12 w-12 sm:h-16 sm:w-16"
+            class="bg-white transition-colors duration-1000 border-white border-4 rounded-full h-12 w-12 sm:h-16 sm:w-16"
             :alt="experience.company.name"
             :aria-label="experience.company.name"
             :src="experience.company.logo"
           />
         </Component>
         <div
-          class="flex-grow w-1 bg-primary-900 transition-colors duration-1000"
+          v-if="showBar"
+          class="flex-grow w-1 bg-white transition-colors duration-1000"
         />
       </div>
-      <div class="flex flex-col flex-grow pb-6 md:pb-8">
+      <div class="flex flex-col flex-grow pb-4 md:pb-6">
         <div class="flex pb-2">
           <div class="flex-1 ml-4">
             <div class="font-bold text-lg">
@@ -52,7 +53,7 @@
           </div>
         </div>
         <div
-          class="rounded-lg transition-all duration-1000 bg-primary-100"
+          class="rounded-lg transition-all duration-1000 bg-white"
           :class="{ 'opacity-0 duration-500': isDisabled }"
         >
           <!--<CollapseTransition :duration="500">-->
@@ -83,7 +84,6 @@ import Vue from 'vue';
 import { Experience, MonthAndYear } from '@/assets/profile/experiences';
 import ExperienceTag from '@/components/experience/ExperienceTag.vue';
 import { format } from 'date-fns';
-import { Tag } from '~/assets/profile/tags';
 
 /**
 const CollapseTransition = Vue.extend(
@@ -109,6 +109,10 @@ export default Vue.extend({
     fixedTag: {
       type: String,
       default: null,
+    },
+    showBar: {
+      type: Boolean,
+      default: false,
     },
   },
   computed: {

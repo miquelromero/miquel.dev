@@ -7,7 +7,7 @@
     v-touch:swipe.top="onSwipeTop"
     v-touch:start="onTouchStart"
     :style="containerStyle"
-    class="font-body bg-primary-300 text-primary-900 overflow-y-scroll h-screen w-screen transition-colors duration-1000"
+    class="font-body bg-primary-200 text-primary-900 overflow-y-scroll h-screen w-screen transition-colors duration-1000"
   >
     <Transition
       enter-active-class="transition-opacity duration-300 ease-in-out"
@@ -46,8 +46,8 @@
           <li v-for="page in pages" :key="page.index">
             <NuxtLink
               class="transition-shadow duration-300 ease-in-out font-mono shadow-inline flex h-10 items-center text-gray-200"
-              :class="`hover:bg-${page.color}-300 hover:text-${page.color}-900`"
-              :active-class="`bg-${page.color}-300 text-${page.color}-900 shadow-sm hover:shadow-none`"
+              :class="`hover:bg-${page.color}-200 hover:text-${page.color}-900`"
+              :active-class="`bg-${page.color}-200 text-${page.color}-900 shadow-sm hover:shadow-none`"
               exact
               :to="{ name: page.routeName }"
             >
@@ -60,13 +60,26 @@
       </nav>
     </div>
     <header
-      :class="isAtTop ? 'shadow-none bg-primary-300' : 'bg-primary-200'"
+      :class="isAtTop ? 'shadow-none bg-primary-200' : 'bg-primary-100'"
       class="w-full z-20 shadow-lg h-20 md:hidden fixed top-0 left-0 transition-all duration-1000"
     >
       <div class="h-full px-4 flex justify-between items-center">
         <h1 class="px-2 flex-grow">
-          <span class="text-2xl font-bold">miquel</span>
-          <span class="font-mono font-light text-lg">.dev</span>
+          <Transition
+            enter-active-class="transition-opacity duration-500 ease-in-out"
+            leave-active-class="transition-opacity duration-500 ease-in-out"
+            enter-class="opacity-0"
+            enter-to-class="opacity-100"
+            leave-class="opacity-100"
+            leave-to-class="opacity-0"
+            mode="out-in"
+          >
+            <span
+              :key="currentPage.title"
+              class="text-2xl font-bold lowercase"
+              >{{ currentPage.title }}</span
+            >
+          </Transition>
         </h1>
         <button
           class="text-lg p-2 lowercase focus:outline-none"
