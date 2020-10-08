@@ -23,7 +23,7 @@
           class="flex-grow w-1 bg-primary-900 transition-colors duration-1000"
         />
       </div>
-      <div class="flex flex-col flex-grow pb-8">
+      <div class="flex flex-col flex-grow pb-6 md:pb-8">
         <div class="flex pb-2">
           <div class="flex-1 ml-4">
             <div class="font-bold text-lg">

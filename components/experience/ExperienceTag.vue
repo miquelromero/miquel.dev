@@ -69,6 +69,9 @@ export default Vue.extend({
   },
   methods: {
     onClick() {
+      if (this.isFixed) {
+        this.$emit('highlight', null);
+      }
       this.$emit('fix', this.isFixed ? null : this.tag);
     },
     onMouseenter() {
