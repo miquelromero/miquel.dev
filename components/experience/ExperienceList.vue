@@ -2,10 +2,11 @@
   <div>
     <div class="text-center">
       <div class="text-sm">Filter by technology</div>
-      <div class="mt-1">
+      <div class="mt-2">
         <ExperienceTag
           v-for="tag in tags"
           :key="tag.tag"
+          class="mx-1 mb-2"
           big
           :tag="tag"
           :fixed-tag="fixedTag"

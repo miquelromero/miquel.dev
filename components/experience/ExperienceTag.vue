@@ -1,6 +1,6 @@
 <template>
   <AppTag
-    class="ml-2 mb-2 shadow duration-500 transition-all"
+    class="shadow duration-500 transition-all"
     :class="{
       'cursor-pointer hover:shadow-md': !readOnly,
     }"

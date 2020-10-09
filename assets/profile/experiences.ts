@@ -23,7 +23,7 @@ export interface Experience {
 const experiences: Experience[] = [
   {
     company: {
-      name: 'Tembeza',
+      name: 'Tembeza International',
       website: 'https://www.tembeza.com',
       logo: '/images/companies/tembeza.png',
     },
@@ -60,7 +60,7 @@ const experiences: Experience[] = [
     company: {
       name: 'Housfy',
       website: 'http://www.housfy.com',
-      logo: '/images/companies/housfy.png',
+      logo: '/images/companies/housfy.svg',
     },
     role: 'Senior Frontend Developer',
     description:
@@ -79,7 +79,7 @@ const experiences: Experience[] = [
     company: {
       name: 'Getinge Cetrea A/S',
       website: 'http://www.cetrea.com',
-      logo: '/images/companies/getinge.png',
+      logo: '/images/companies/getinge.svg',
     },
     role: 'Frontend Developer',
     description:
@@ -136,7 +136,7 @@ const experiences: Experience[] = [
     company: {
       name: 'Dipsalut',
       website: 'https://www.dipsalut.cat',
-      logo: '/images/companies/dipsalut.jpg',
+      logo: '/images/companies/dipsalut.png',
     },
     role: 'Associate in Department of information management for quality',
     description: 'SQL, Business Intelligence reports, technical support.',

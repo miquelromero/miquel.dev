@@ -63,6 +63,7 @@
               <ExperienceTag
                 v-for="tag in experience.tags"
                 :key="tag.tag"
+                class="mr-2 mb-2"
                 :tag="tag"
                 :fixed-tag="fixedTag"
                 :highlighted-tag="highlightedTag"
