@@ -21,6 +21,9 @@ module.exports = {
       mono: ['Fira Code', ...defaultTheme.fontFamily.mono],
     },
     extend: {
+      transitionDuration: {
+        600: '600ms',
+      },
       colors: {
         primary: {
           50: 'var(--color-primary-50)',

@@ -7,7 +7,7 @@
     v-touch:swipe.top="onSwipeTop"
     v-touch:start="onTouchStart"
     :style="containerStyle"
-    class="font-body bg-primary-200 text-primary-900 overflow-y-scroll h-screen w-screen transition-colors duration-1000"
+    class="font-body bg-primary-200 text-primary-900 overflow-y-scroll h-screen w-screen transition-colors duration-600"
   >
     <Transition
       enter-active-class="transition-opacity duration-300 ease-in-out"
@@ -61,12 +61,12 @@
     </div>
     <header
       :class="isAtTop ? 'shadow-none bg-transparent' : 'bg-primary-100'"
-      class="w-full z-20 shadow-lg h-20 md:hidden fixed top-0 left-0 transition-all duration-1000"
+      class="w-full z-20 shadow-lg h-20 md:hidden fixed top-0 left-0 transition-all duration-600"
     >
       <div class="h-full px-4 flex justify-between items-center">
         <Transition
-          enter-active-class="transition-all duration-500 ease-in-out"
-          leave-active-class="transition-all duration-500 ease-in-out"
+          enter-active-class="transition-all duration-300 ease-in-out"
+          leave-active-class="transition-all duration-300 ease-in-out"
           enter-class="opacity-0"
           enter-to-class="opacity-100"
           leave-class="opacity-100"
@@ -81,7 +81,7 @@
           </h1>
         </Transition>
         <button
-          class="transition-colors duration-1000 text-primary-900 text-lg p-2 lowercase focus:outline-none"
+          class="transition-colors duration-600 text-primary-900 text-lg p-2 lowercase focus:outline-none"
           @click="openDrawer"
         >
           Menu
@@ -96,9 +96,9 @@
           <Nuxt class="m-4 sm:m-8" />
         </main>
         <div class="h-20">
-          <transition
-            enter-active-class="transition-all duration-500 ease-out"
-            leave-active-class="transition-all duration-500 ease-in"
+          <Transition
+            enter-active-class="transition-all duration-300 ease-out"
+            leave-active-class="transition-all duration-300 ease-in"
             enter-class="opacity-0"
             leave-to-class="opacity-0"
             mode="out-in"
@@ -107,7 +107,7 @@
               <NoSsr>
                 <NuxtLink
                   :to="{ name: nextPage.routeName }"
-                  class="flex text-primary-900 flex-grow items-center transition-colors duration-500"
+                  class="flex text-primary-900 flex-grow items-center transition-colors duration-300"
                 >
                   <div
                     class="w-full flex flex-col items-center text-xl lowercase"
@@ -118,7 +118,7 @@
                 </NuxtLink>
               </NoSsr>
             </div>
-          </transition>
+          </Transition>
         </div>
       </div>
     </div>

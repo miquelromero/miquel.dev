@@ -34,7 +34,7 @@
         </Component>
         <div
           v-if="showBar"
-          class="flex-grow w-1 bg-white transition-colors duration-1000"
+          class="flex-grow w-1 bg-white transition-colors duration-600"
         />
       </div>
       <Transition
@@ -77,7 +77,7 @@
             </div>
           </div>
           <div
-            class="rounded-lg transition-all duration-1000 bg-white"
+            class="rounded-lg transition-all duration-600 bg-white"
             :class="{ 'opacity-0 duration-500': isDisabled }"
           >
             <!--<CollapseTransition :duration="500">-->
