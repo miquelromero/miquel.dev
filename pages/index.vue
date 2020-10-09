@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center">
+  <div class="text-center align-center flex-grow flex flex-col justify-center">
     <h1 class="text-3xl sm:text-5xl mb-4">
       Hi, it's <span class="font-bold">Miquel</span> 👋
     </h1>

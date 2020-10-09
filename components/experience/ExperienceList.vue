@@ -21,6 +21,7 @@
         <ExperienceListItem
           v-for="(experience, index) in experiences"
           :key="index"
+          :index="index"
           :experience="experience"
           :fixed-tag="fixedTag"
           :highlighted-tag="highlightedTag"

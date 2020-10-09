@@ -60,13 +60,13 @@
       </nav>
     </div>
     <header
-      :class="isAtTop ? 'shadow-none bg-primary-200' : 'bg-primary-100'"
+      :class="isAtTop ? 'shadow-none bg-transparent' : 'bg-primary-100'"
       class="w-full z-20 shadow-lg h-20 md:hidden fixed top-0 left-0 transition-all duration-1000"
     >
       <div class="h-full px-4 flex justify-between items-center">
         <Transition
-          enter-active-class="transition-opacity duration-500 ease-in-out"
-          leave-active-class="transition-opacity duration-500 ease-in-out"
+          enter-active-class="transition-all duration-500 ease-in-out"
+          leave-active-class="transition-all duration-500 ease-in-out"
           enter-class="opacity-0"
           enter-to-class="opacity-100"
           leave-class="opacity-100"
@@ -75,13 +75,13 @@
         >
           <h1
             :key="currentPage.index"
-            class="px-2 flex-grow text-2xl font-bold lowercase"
+            class="text-primary-900 px-2 flex-grow text-2xl font-bold lowercase"
           >
             {{ currentPage.title }}
           </h1>
         </Transition>
         <button
-          class="text-lg p-2 lowercase focus:outline-none"
+          class="transition-colors duration-1000 text-primary-900 text-lg p-2 lowercase focus:outline-none"
           @click="openDrawer"
         >
           Menu
@@ -91,8 +91,8 @@
     <div
       class="min-h-screen overflow-x-hidden md:ml-64 flex-grow flex flex-col"
     >
-      <div class="pt-20 md:pt-0 flex flex-col flex-grow">
-        <main class="flex-grow flex flex-col justify-center overflow-hidden">
+      <div class="pt-20 md:pt-0 flex flex-col flex-grow overflow-hidden">
+        <main class="container mx-auto flex-grow flex flex-col">
           <Nuxt class="m-4 sm:m-8" />
         </main>
         <div class="h-20">
