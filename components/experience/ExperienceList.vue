@@ -16,7 +16,7 @@
         />
       </div>
     </div>
-    <ul class="mt-4">
+    <ul class="mt-6 sm:mt-8">
       <li>
         <ExperienceListItem
           v-for="(experience, index) in experiences"

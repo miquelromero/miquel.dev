@@ -50,7 +50,7 @@
           :class="{ 'lg:text-right': isEven }"
         >
           <div class="flex pb-2">
-            <div class="flex-1 ml-4" :class="{ 'lg:ml-0 mr-4': isEven }">
+            <div class="flex-1 ml-4" :class="{ 'lg:ml-0 lg:mr-4': isEven }">
               <div class="font-bold text-lg">
                 {{ experience.role }}
               </div>
@@ -88,7 +88,7 @@
                   v-for="tag in experience.tags"
                   :key="tag.tag"
                   class="mr-2 mb-2"
-                  :class="{ 'lg:mr-0 ml-2': isEven }"
+                  :class="{ 'lg:mr-0 lg:ml-2': isEven }"
                   :tag="tag"
                   :fixed-tag="fixedTag"
                   :highlighted-tag="highlightedTag"
