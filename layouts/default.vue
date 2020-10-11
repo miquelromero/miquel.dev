@@ -61,7 +61,7 @@
       </nav>
       <div class="flex-grow" />
       <div
-        class="py-4 md:px-3 flex justify-around items-center text-sm font-mono"
+        class="py-4 px-2 md:px-4 flex justify-between items-center text-sm font-mono"
       >
         <a
           v-for="(link, index) in bottomLinks"
@@ -74,8 +74,8 @@
           <AppIcon
             class="mr-2"
             icon-name="linkedin"
-            width="24"
-            height="24"
+            width="20"
+            height="20"
             :icon="link.icon"
           />{{ link.text }}
         </a>
