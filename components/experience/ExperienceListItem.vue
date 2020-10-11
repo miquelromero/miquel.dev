@@ -25,6 +25,8 @@
             >
               <img
                 class="w-full h-full border-white border-4 rounded-full"
+                width="100%"
+                height="100%"
                 :alt="experience.company.name"
                 :aria-label="experience.company.name"
                 :src="experience.company.logo"

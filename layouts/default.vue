@@ -30,9 +30,11 @@
       :style="{ backgroundImage: `url(${pattern})` }"
       :class="{ 'transform-none': isDrawerVisible }"
     >
-      <NuxtLink :to="{ name: 'index' }">
+      <NuxtLink :to="{ name: 'index' }" class="w-56 h-56 md:w-64 md:h-64">
         <img
-          class="w-56 h-56 md:w-64 md:h-64"
+          class="w-full h-full"
+          width="100%"
+          height="100%"
           alt="Miquel in the office"
           src="~/assets/images/miquel.jpg"
         />
@@ -71,13 +73,9 @@
           target="_blank"
           rel="noopener"
         >
-          <AppIcon
-            class="mr-2"
-            icon-name="linkedin"
-            width="20"
-            height="20"
-            :icon="link.icon"
-          />{{ link.text }}
+          <AppIcon class="mr-2" width="20" height="20" :icon="link.icon" />{{
+            link.text
+          }}
         </a>
       </div>
     </div>
