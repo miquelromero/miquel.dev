@@ -132,24 +132,6 @@ const experiences: Experience[] = [
     },
     tags: [tags.JS, tags.PHP, tags.JQUERY],
   },
-  {
-    company: {
-      name: 'Dipsalut',
-      website: 'https://www.dipsalut.cat',
-      logo: '/images/companies/dipsalut.png',
-    },
-    role: 'Associate in Department of information management for quality',
-    description: 'SQL, Business Intelligence reports, technical support.',
-    from: {
-      month: 10,
-      year: 2012,
-    },
-    to: {
-      month: 5,
-      year: 2013,
-    },
-    tags: [],
-  },
 ];
 
 export default experiences;
