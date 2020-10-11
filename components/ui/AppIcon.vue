@@ -1,21 +1,35 @@
 <template>
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
+  <Component
+    :is="icon"
     :width="width"
     :height="height"
-    viewBox="0 0 18 18"
     :aria-labelledby="iconName"
     role="presentation"
-  >
-    <title :id="iconName" lang="en">{{ iconName }} icon</title>
-    <g :fill="iconColor">
-      <slot />
-    </g>
-  </svg>
+  />
 </template>
 
-<script>
-export default {};
-</script>
+<script lang="ts">
+import Vue from 'vue';
 
-<style></style>
+export default Vue.extend({
+  name: 'AppIcon',
+  props: {
+    iconName: {
+      type: String,
+      default: '',
+    },
+    icon: {
+      type: Object,
+      default: () => {},
+    },
+    width: {
+      type: [Number, String],
+      default: 18,
+    },
+    height: {
+      type: [Number, String],
+      default: 18,
+    },
+  },
+});
+</script>

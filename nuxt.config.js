@@ -23,8 +23,17 @@ export default {
         name: 'description',
         content: 'Frontend Developer',
       },
+      {
+        hid: 'og:description',
+        name: 'og:description',
+        content: 'Frontend Developer',
+      },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+  },
+  env: {
+    linkedinProfileUrl: 'https://www.linkedin.com/in/miquelromero/',
+    githubProfileUrl: 'https://github.com/miquelromero',
   },
   /*
    ** Global CSS
@@ -45,6 +54,7 @@ export default {
    */
   buildModules: [
     '@nuxt/typescript-build',
+    '@nuxtjs/svg',
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
     '@nuxtjs/tailwindcss',
 

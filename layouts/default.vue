@@ -27,6 +27,7 @@
     </Transition>
     <div
       class="transition-transform md:transform-none duration-300 ease-in-out transform -translate-x-56 fixed z-30 shadow-2xl md:shadow-none top-0 w-56 md:w-64 bg-gray-800 h-screen flex flex-col overflow-y-auto"
+      :style="{ backgroundImage: `url(${pattern})` }"
       :class="{ 'transform-none': isDrawerVisible }"
     >
       <NuxtLink :to="{ name: 'index' }">
@@ -58,6 +59,27 @@
           </li>
         </ul>
       </nav>
+      <div class="flex-grow" />
+      <div
+        class="py-4 md:px-3 flex justify-around items-center text-sm font-mono"
+      >
+        <a
+          v-for="(link, index) in bottomLinks"
+          :key="index"
+          class="p-2 text-gray-400 hover:text-white flex items-center"
+          :href="link.href"
+          target="_blank"
+          rel="noopener"
+        >
+          <AppIcon
+            class="mr-2"
+            icon-name="linkedin"
+            width="24"
+            height="24"
+            :icon="link.icon"
+          />{{ link.text }}
+        </a>
+      </div>
     </div>
     <header
       :class="isAtTop ? 'shadow-none bg-transparent' : 'bg-primary-100'"
@@ -126,24 +148,41 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue, { VueConstructor } from 'vue';
 import pages, { Page } from '@/assets/pages';
+import AppIcon from '@/components/ui/AppIcon.vue';
+import LinkedinIcon from '@/assets/icons/linkedin.svg?inline';
+import GithubIcon from '@/assets/icons/github.svg?inline';
+import EmailIcon from '@/assets/icons/email.svg?inline';
+import pattern from '@/assets/patterns/pattern.svg?data';
+
 const {
   theme: { colors },
 } = require('tailwindcss/lib/flagged/uniformColorPalette').default;
 
+interface BottomLink {
+  href: string;
+  text: string;
+  icon: VueConstructor<Vue>;
+}
+
 interface Data {
-  isDrawerVisible: Boolean;
-  isAtTop: Boolean;
-  isAtBottom: Boolean;
-  wasAtTop?: Boolean;
-  wasAtBottom?: Boolean;
+  isDrawerVisible: boolean;
+  isAtTop: boolean;
+  isAtBottom: boolean;
+  wasAtTop?: boolean;
+  wasAtBottom?: boolean;
   pages: Page[];
-  ongoingWheel: Boolean;
+  ongoingWheel: boolean;
   ongoingWheelTimeout?: NodeJS.Timeout;
+  bottomLinks: BottomLink[];
+  pattern: string;
 }
 
 export default Vue.extend({
+  components: {
+    AppIcon,
+  },
   data(): Data {
     return {
       isDrawerVisible: false,
@@ -154,6 +193,19 @@ export default Vue.extend({
       pages,
       ongoingWheel: false,
       ongoingWheelTimeout: undefined,
+      bottomLinks: [
+        {
+          text: 'LinkedIn',
+          icon: LinkedinIcon,
+          href: process.env.linkedinProfileUrl || '',
+        },
+        {
+          text: 'GitHub',
+          icon: GithubIcon,
+          href: process.env.githubProfileUrl || '',
+        },
+      ],
+      pattern,
     };
   },
   computed: {
