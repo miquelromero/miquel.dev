@@ -30,7 +30,10 @@
       :style="{ backgroundImage: `url(${pattern})` }"
       :class="{ 'transform-none': isDrawerVisible }"
     >
-      <NuxtLink :to="{ name: 'index' }" class="w-56 h-56 md:w-64 md:h-64">
+      <NuxtLink
+        :to="{ name: 'index' }"
+        class="w-56 h-56 md:w-64 md:h-64 flex-shrink-0"
+      >
         <img
           class="w-full h-full"
           width="100%"
