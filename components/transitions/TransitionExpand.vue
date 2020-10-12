@@ -1,5 +1,5 @@
 <script lang="ts">
-// Adapted from https://github.com/maoberlehner/transition-to-height-auto-with-vue/tree/master/src/components
+// Adapted from https://github.com/maoberlehner/transition-to-height-auto-with-vue/blob/master/src/components/TransitionExpand.vue
 import Vue from 'vue';
 
 export default Vue.extend({
@@ -88,3 +88,12 @@ export default Vue.extend({
   },
 });
 </script>
+
+<style scoped>
+* {
+  will-change: height;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+</style>
