@@ -78,13 +78,21 @@
               </div>
             </div>
           </div>
-          <div
-            class="rounded-lg transition-all duration-600 bg-white"
-            :class="{ 'opacity-0 duration-500': isDisabled }"
+          <TransitionExpand
+            enter-active-class="transition-all duration-500 ease-out"
+            enter-class="opacity-0"
+            enter-to-class="opacity-100"
+            leave-active-class="transition-all duration-500 ease-out"
+            leave-class="opacity-100"
+            leave-to-class="opacity-0"
           >
-            <!--<CollapseTransition :duration="500">-->
-            <div v-if="!isDisabled">
-              <div class="px-6 py-4 text-sm">{{ experience.description }}</div>
+            <div
+              v-show="!isDisabled"
+              class="rounded-lg bg-white overflow-hidden"
+            >
+              <div class="px-6 py-4 text-sm">
+                {{ experience.description }}
+              </div>
               <div v-if="experience.tags.length > 0" class="px-6 pt-4 pb-2">
                 <ExperienceTag
                   v-for="tag in experience.tags"
@@ -100,8 +108,7 @@
                 />
               </div>
             </div>
-            <!--</CollapseTransition>-->
-          </div>
+          </TransitionExpand>
         </div>
       </Transition>
     </div>
@@ -113,18 +120,13 @@ import Vue from 'vue';
 import { Experience, MonthAndYear } from '@/assets/profile/experiences';
 import ExperienceTag from '@/components/experience/ExperienceTag.vue';
 import { format } from 'date-fns';
-
-/**
-const CollapseTransition = Vue.extend(
-  require('@ivanv/vue-collapse-transition').CollapseTransition
-);
-*/
+import TransitionExpand from '@/components/transitions/TransitionExpand.vue';
 
 export default Vue.extend({
   name: 'ExperienceListItem',
   components: {
     ExperienceTag,
-    // CollapseTransition,
+    TransitionExpand,
   },
   props: {
     experience: {
