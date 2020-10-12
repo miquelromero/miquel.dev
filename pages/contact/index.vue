@@ -1,9 +1,9 @@
 <template>
   <div class="flex-grow md:items-center flex flex-col md:flex-row">
-    <div class="md:w-1/2 px-4">
+    <div class="md:w-1/2 md:px-4">
       <div class="text-center text-xl">You can contact me in...</div>
     </div>
-    <div class="md:w-1/2 px-4">
+    <div class="md:w-1/2 md:px-4">
       <div class="text-center text-xl">...or just fill this form</div>
       <form
         netlify
@@ -20,7 +20,7 @@
             name="email"
             type="email"
             required
-            class="mt-1 font-mono w-full bg-primary-100 p-2 resize border rounded focus:outline-none focus:shadow-outline"
+            class="mt-1 font-mono w-full bg-white bg-opacity-75 p-2 resize border rounded focus:outline-none focus:shadow-outline"
             placeholder="your@email.com"
           />
         </div>
@@ -31,12 +31,12 @@
             v-model="text"
             required
             name="text"
-            class="mt-1 font-mono w-full bg-primary-100 p-2 h-64 resize border rounded focus:outline-none focus:shadow-outline"
+            class="mt-1 font-mono w-full bg-white bg-opacity-75 p-2 h-64 resize border rounded focus:outline-none focus:shadow-outline"
             placeholder="Add some text here"
           />
         </div>
         <button
-          class="w-full mt-4 bg-primary-500 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded"
+          class="w-full mt-4 transition-colors duration-600 bg-primary-500 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded"
           type="submit"
         >
           Submit
