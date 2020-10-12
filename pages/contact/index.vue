@@ -12,18 +12,29 @@
         data-netlify-honeypot="bot-field"
         @submit.prevent="submit"
       >
-        <input
-          v-model="subject"
-          name="subject"
-          class="font-mono w-full mt-4 bg-primary-100 p-2 resize border rounded focus:outline-none focus:shadow-outline"
-          placeholder="Subject"
-        />
-        <textarea
-          v-model="text"
-          name="text"
-          class="font-mono w-full mt-4 bg-primary-100 p-2 h-64 resize border rounded focus:outline-none focus:shadow-outline"
-          placeholder="Add some text here"
-        />
+        <div class="pt-4">
+          <label for="email">Email address</label>
+          <input
+            id="email"
+            v-model="email"
+            name="email"
+            type="email"
+            required
+            class="mt-1 font-mono w-full bg-primary-100 p-2 resize border rounded focus:outline-none focus:shadow-outline"
+            placeholder="your@email.com"
+          />
+        </div>
+        <div class="pt-4">
+          <label for="text">How can I help you?</label>
+          <textarea
+            id="text"
+            v-model="text"
+            required
+            name="text"
+            class="mt-1 font-mono w-full bg-primary-100 p-2 h-64 resize border rounded focus:outline-none focus:shadow-outline"
+            placeholder="Add some text here"
+          />
+        </div>
         <button
           class="w-full mt-4 bg-primary-500 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded"
           type="submit"
@@ -41,7 +52,7 @@ import pageMixin from '@/mixins/page-mixin';
 
 interface Data {
   formName: string;
-  subject: string;
+  email: string;
   text: string;
 }
 
@@ -50,7 +61,7 @@ export default Vue.extend({
   data(): Data {
     return {
       formName: 'contact',
-      subject: '',
+      email: '',
       text: '',
     };
   },
@@ -69,7 +80,7 @@ export default Vue.extend({
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: new URLSearchParams({
             'form-name': this.formName,
-            subject: encodeURIComponent(this.subject),
+            email: encodeURIComponent(this.email),
             text: encodeURIComponent(this.text),
           }),
         });
