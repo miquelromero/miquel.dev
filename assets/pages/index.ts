@@ -16,17 +16,17 @@ const pages: Page[] = [
   },
   {
     index: 1,
-    title: 'Experience',
-    longTitle: 'Check my experience',
-    color: 'blue',
-    routeName: 'experience',
-  },
-  {
-    index: 2,
     title: 'Skills',
     longTitle: 'See my skills',
     color: 'orange',
     routeName: 'skills',
+  },
+  {
+    index: 2,
+    title: 'Experience',
+    longTitle: 'Check my experience',
+    color: 'blue',
+    routeName: 'experience',
   },
   {
     index: 3,

@@ -117,7 +117,7 @@ const experiences: Experience[] = [
     company: {
       name: 'Hermes Comunicacions',
       website: 'https://www.linkedin.com/company/hermes-comunicacions/about/',
-      logo: '/images/companies/hermes.png',
+      logo: '/images/companies/hermes.svg',
     },
     role: 'Junior Software Developer',
     description:
