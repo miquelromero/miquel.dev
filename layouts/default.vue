@@ -115,9 +115,10 @@
       class="min-h-screen overflow-x-hidden md:ml-64 flex-grow flex flex-col"
     >
       <div class="pt-20 md:pt-0 flex flex-col flex-grow overflow-hidden">
-        <main class="container mx-auto flex-grow flex flex-col">
-          <Nuxt class="m-4 sm:m-8" />
+        <main class="m-4 sm:m-8 mx-auto flex-grow flex flex-col">
+          <Nuxt class="container" />
         </main>
+
         <div class="h-20">
           <Transition
             enter-active-class="transition-all duration-300 ease-out"
