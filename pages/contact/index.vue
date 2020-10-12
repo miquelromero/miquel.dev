@@ -7,7 +7,7 @@
       <div class="text-center text-xl">...or just fill this form</div>
       <form
         netlify
-        name="contact"
+        :name="formName"
         method="post"
         data-netlify-honeypot="bot-field"
         @submit.prevent="submit"
@@ -40,6 +40,7 @@ import Vue from 'vue';
 import pageMixin from '@/mixins/page-mixin';
 
 interface Data {
+  formName: string;
   subject: string;
   text: string;
 }
@@ -48,6 +49,7 @@ export default Vue.extend({
   mixins: [pageMixin],
   data(): Data {
     return {
+      formName: 'contact',
       subject: '',
       text: '',
     };
@@ -66,7 +68,7 @@ export default Vue.extend({
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: new URLSearchParams({
-            'form-name': 'contact-us',
+            'form-name': this.formName,
             subject: encodeURIComponent(this.subject),
             text: encodeURIComponent(this.text),
           }),
