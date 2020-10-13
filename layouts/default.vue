@@ -115,8 +115,8 @@
       class="min-h-screen overflow-x-hidden md:ml-64 flex-grow flex flex-col"
     >
       <div class="pt-20 md:pt-0 flex flex-col flex-grow overflow-hidden">
-        <main class="p-4 sm:p-8 mx-auto flex-grow flex flex-col">
-          <Nuxt class="container" />
+        <main class="p-4 sm:p-8 flex-grow flex flex-col">
+          <Nuxt class="container mx-auto" />
         </main>
 
         <div class="h-20">
