@@ -25,7 +25,7 @@ const experiences: Experience[] = [
     company: {
       name: 'Tembeza International',
       website: 'https://www.tembeza.com',
-      logo: '/images/companies/tembeza.png',
+      logo: '/images/companies/tembeza.svg',
     },
     role: 'Senior Frontend Developer',
     description:
