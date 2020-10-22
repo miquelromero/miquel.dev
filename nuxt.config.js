@@ -94,11 +94,6 @@ export default {
     hostname: 'https://miquel.dev',
   },
   /*
-   ** Content module configuration
-   ** See https://content.nuxtjs.org/configuration
-   */
-  content: {},
-  /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
@@ -114,5 +109,10 @@ export default {
   },
   workbox: {
     clientsClaim: false,
+  },
+  pwa: {
+    meta: {
+      theme_color: '#252f3f',
+    },
   },
 };
