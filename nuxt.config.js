@@ -114,5 +114,8 @@ export default {
     meta: {
       theme_color: '#252f3f',
     },
+    manifest: {
+      background_color: '#252f3f',
+    },
   },
 };
