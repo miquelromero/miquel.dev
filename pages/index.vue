@@ -1,7 +1,7 @@
 <template>
-  <div class="text-center flex-grow flex flex-col justify-center">
+  <div class="flex-grow flex flex-col justify-center text-center">
     <DrawingsAbout
-      class="w-full h-full sm:w-1/2 xl:w-1/3 text-primary-500 mb-8 mx-auto transition-colors duration-600"
+      class="w-full sm:w-1/2 xl:w-1/3 h-auto mb-8 text-primary-500 transition-colors duration-600 mx-auto"
     />
     <h1
       class="text-3xl sm:text-5xl mb-4 text-primary-800 transition-colors duration-600"
