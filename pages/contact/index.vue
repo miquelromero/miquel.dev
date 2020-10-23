@@ -1,10 +1,12 @@
 <template>
-  <div class="flex-grow md:items-center flex flex-col md:flex-row">
-    <div class="md:w-1/2 md:px-4">
-      <div class="text-center text-xl">You can contact me in...</div>
+  <div class="flex-grow xl:items-center flex flex-col xl:flex-row">
+    <div class="mb-8 xl:mb-0 xl:w-1/2 xl:px-8">
+      <DrawingsContact
+        class="w-full h-full text-primary-500 transition-colors duration-600"
+      />
     </div>
-    <div class="md:w-1/2 md:px-4">
-      <div class="text-center text-xl">...or just fill this form</div>
+    <div class="xl:w-1/2 xl:px-8">
+      <div class="text-center text-xl">Fill this form to contact me</div>
       <form
         netlify
         :name="formName"
@@ -49,6 +51,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import pageMixin from '@/mixins/page-mixin';
+import DrawingsContact from '@/assets/images/drawings/contact.svg?inline';
 
 interface Data {
   formName: string;
@@ -57,6 +60,9 @@ interface Data {
 }
 
 export default Vue.extend({
+  components: {
+    DrawingsContact,
+  },
   mixins: [pageMixin],
   data(): Data {
     return {

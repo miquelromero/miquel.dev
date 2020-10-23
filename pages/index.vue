@@ -1,11 +1,19 @@
 <template>
-  <div class="text-center align-center flex-grow flex flex-col justify-center">
-    <h1 class="text-3xl sm:text-5xl mb-4">
+  <div class="text-center flex-grow flex flex-col justify-center">
+    <DrawingsAbout
+      class="w-full h-full sm:w-1/2 xl:w-1/3 text-primary-500 mb-8 mx-auto transition-colors duration-600"
+    />
+    <h1
+      class="text-3xl sm:text-5xl mb-4 text-primary-800 transition-colors duration-600"
+    >
       Hi, it's <span class="font-bold">Miquel</span> 👋
     </h1>
-    <p class="text-xl sm:text-3xl">
+    <p
+      class="text-xl sm:text-3xl text-primary-800 transition-colors duration-600"
+    >
       I am a <span class="font-bold">Frontend Developer</span> located in Girona
-      (<span class="font-bold">Barcelona</span>) specialized in
+      (<span class="font-bold color-primary-500">Barcelona</span>) specialized
+      in
       <span class="font-bold">Vue.js</span>
     </p>
   </div>
@@ -14,8 +22,12 @@
 <script lang="ts">
 import Vue from 'vue';
 import pageMixin from '@/mixins/page-mixin';
+import DrawingsAbout from '@/assets/images/drawings/about.svg?inline';
 
 export default Vue.extend({
+  components: {
+    DrawingsAbout,
+  },
   mixins: [pageMixin],
   head() {
     return {
