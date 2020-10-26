@@ -19,7 +19,9 @@ export default Vue.extend({
   mixins: [pageMixin],
   head() {
     return {
-      title: 'Skills of',
+      title: 'Skills',
+      description:
+        'See my skills as a developer, languages and frameworks I have experience with, education I received',
     };
   },
 });

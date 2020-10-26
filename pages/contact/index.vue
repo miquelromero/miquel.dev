@@ -98,7 +98,9 @@ export default Vue.extend({
   },
   head() {
     return {
-      title: 'Contact',
+      title: 'Contact me',
+      description:
+        'Send me an email at miquelromero@outlook.com or fill this form to contact me',
     };
   },
 });

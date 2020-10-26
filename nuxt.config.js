@@ -14,20 +14,10 @@ export default {
    ** See https://nuxtjs.org/api/configuration-head
    */
   head: {
-    titleTemplate: '%s Miquel Romero Sanfeliu',
+    titleTemplate: '%s | Miquel Romero Sanfeliu, frontend developer',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      {
-        hid: 'description',
-        name: 'description',
-        content: 'Frontend Developer',
-      },
-      {
-        hid: 'og:description',
-        name: 'og:description',
-        content: 'Frontend Developer',
-      },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },

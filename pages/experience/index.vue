@@ -27,7 +27,8 @@ export default Vue.extend({
   },
   head() {
     return {
-      title: 'Experience of',
+      title: 'Experiences',
+      description: 'Here you can see my recent professional experiences',
     };
   },
 });

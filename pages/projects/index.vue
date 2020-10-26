@@ -20,6 +20,7 @@ export default Vue.extend({
   head() {
     return {
       title: 'Projects made by',
+      description: 'Take a look at some of my personal projects',
     };
   },
 });

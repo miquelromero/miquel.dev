@@ -31,7 +31,9 @@ export default Vue.extend({
   mixins: [pageMixin],
   head() {
     return {
-      title: 'About',
+      title: 'About me',
+      description:
+        'A frontend developer specialized in Vue.js. See my experience, projects and skills.',
     };
   },
 });
