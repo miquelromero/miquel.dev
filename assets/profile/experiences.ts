@@ -23,6 +23,22 @@ export interface Experience {
 const experiences: Experience[] = [
   {
     company: {
+      name: 'Tekla.io',
+      website: 'https://www.tekla.io',
+      logo: '/images/companies/tekla.svg',
+    },
+    role: 'Head of Software Engineering',
+    description:
+      'Leading a small development department while assuming an active role in analysing, developing, releasing and maintaining a wide range of web and mobile apps as a full-stack.',
+    from: {
+      month: 10,
+      year: 2020,
+    },
+    to: null,
+    tags: [tags.VUE, tags.ANGULAR, tags.NODEJS, tags.JS, tags.TS, tags.FLUTTER],
+  },
+  {
+    company: {
       name: 'Tembeza International',
       website: 'https://www.tembeza.com',
       logo: '/images/companies/tembeza.svg',
@@ -34,7 +50,10 @@ const experiences: Experience[] = [
       month: 6,
       year: 2020,
     },
-    to: null,
+    to: {
+      month: 10,
+      year: 2020,
+    },
     tags: [tags.VUE, tags.JS],
   },
   {
@@ -92,7 +111,7 @@ const experiences: Experience[] = [
       month: 5,
       year: 2019,
     },
-    tags: [tags.ANGULAR, tags.JAVA, tags.JS, tags.TS],
+    tags: [tags.ANGULAR, tags.JAVA, tags.NODEJS, tags.JS, tags.TS],
   },
   {
     company: {

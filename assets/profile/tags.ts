@@ -42,6 +42,18 @@ export const tags: { [index: string]: Tag } = {
     primaryColor: '#3178c6',
     secondaryColor: 'white',
   },
+  FLUTTER: {
+    tag: 'flutter',
+    name: 'Flutter',
+    primaryColor: '#46d1fd',
+    secondaryColor: 'black',
+  },
+  NODEJS: {
+    tag: 'nodejs',
+    name: 'Node.js',
+    primaryColor: '#80bd01',
+    secondaryColor: 'black',
+  },
   JQUERY: {
     tag: 'jquery',
     name: 'jQuery',

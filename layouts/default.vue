@@ -136,8 +136,8 @@
                   <div
                     class="w-full flex flex-col items-center text-xl lowercase"
                   >
-                    <font-awesome-icon icon="chevron-up" />
                     {{ nextPage.longTitle }}
+                    <font-awesome-icon icon="chevron-down" />
                   </div>
                 </NuxtLink>
               </NoSsr>
@@ -340,9 +340,9 @@ export default Vue.extend({
         this.ongoingWheel = true;
       }
       if (event.deltaY < 0 && this.isAtTop && this.previousPage) {
-        this.$router.push({ name: this.previousPage.routeName });
+        this.navigateToPreviousPage();
       } else if (event.deltaY > 0 && this.nextPage && this.isAtBottom) {
-        this.$router.push({ name: this.nextPage.routeName });
+        this.navigateToNextPage();
       }
     },
   },
