@@ -19,9 +19,9 @@
           >
             <Transition
               appear
-              enter-active-class="transition-all duration-500 ease-out-in"
-              enter-class="opacity-0 transform scale-0"
-              enter-to-class="opacity-100"
+              appear-active-class="transition-all duration-500 ease-out-in"
+              appear-class="opacity-0 transform scale-0"
+              appear-to-class="opacity-100"
             >
               <img
                 class="w-full h-full border-white border-4 rounded-full"
@@ -41,11 +41,11 @@
       </div>
       <Transition
         appear
-        enter-active-class="transition-all duration-500 ease-out-in"
-        :enter-class="`opacity-0 transform translate-x-32 ${
+        appear-active-class="transition-all duration-500 ease-out-in"
+        :appear-class="`opacity-0 transform translate-x-32 ${
           isEven ? 'lg:-translate-x-32' : ''
         }`"
-        enter-to-class="opacity-100"
+        appear-to-class="opacity-100"
       >
         <div
           class="flex flex-col flex-grow pb-4 md:pb-6 w-0"
