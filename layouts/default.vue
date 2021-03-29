@@ -51,9 +51,9 @@
         <ul class="w-full flex flex-col space-y-2">
           <li v-for="page in pages" :key="page.index">
             <NuxtLink
-              class="transition-shadow duration-300 ease-in-out font-mono shadow-inline flex h-10 items-center text-gray-200"
-              :class="`hover:bg-${page.color}-200 hover:text-${page.color}-900`"
-              :active-class="`bg-${page.color}-200 text-${page.color}-900 shadow-sm hover:shadow-none`"
+              class="transition-shadow duration-300 ease-in-out font-mono  flex h-10 items-center text-gray-200"
+              :class="`hover:bg-${page.colorClass}-200 hover:text-${page.colorClass}-900`"
+              :active-class="`bg-${page.colorClass}-200 text-${page.colorClass}-900 shadow-sm hover:shadow-none`"
               exact
               :to="{ name: page.routeName }"
             >
@@ -155,12 +155,9 @@ import pages, { Page } from '@/assets/pages';
 import AppIcon from '@/components/ui/AppIcon.vue';
 import LinkedinIcon from '@/assets/icons/linkedin.svg?inline';
 import GithubIcon from '@/assets/icons/github.svg?inline';
-import EmailIcon from '@/assets/icons/email.svg?inline';
 import pattern from '@/assets/patterns/pattern.svg?data';
-
-const {
-  theme: { colors },
-} = require('tailwindcss/lib/flagged/uniformColorPalette').default;
+const colors = require('tailwindcss/colors');
+console.log(colors)
 
 interface BottomLink {
   href: string;
@@ -231,7 +228,7 @@ export default Vue.extend({
       return shades.reduce(
         (acc: any, shade: number) => ({
           ...acc,
-          [`--color-primary-${shade}`]: colors[this.currentPage.color][shade],
+          [`--color-primary-${shade}`]: colors[this.currentPage.colorName][shade],
         }),
         {}
       );

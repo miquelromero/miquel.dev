@@ -1,6 +1,8 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 const pages = require('./assets/pages').default;
-const colors = pages.map((page) => page.color);
+const colors = require('tailwindcss/colors')
+
+const pageColors = pages.map((page) => page.colorClass);
 
 /*
  ** TailwindCSS Configuration File
@@ -9,12 +11,6 @@ const colors = pages.map((page) => page.color);
  ** Default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
  */
 module.exports = {
-  experimental: {
-    uniformColorPalette: true,
-  },
-  future: {
-    removeDeprecatedGapUtilities: true,
-  },
   theme: {
     fontFamily: {
       body: ['Comfortaa', ...defaultTheme.fontFamily.sans],
@@ -37,6 +33,8 @@ module.exports = {
           800: 'var(--color-primary-800)',
           900: 'var(--color-primary-900)',
         },
+        teal: colors.teal,
+        orange: colors.orange,
       },
     },
   },
@@ -46,7 +44,7 @@ module.exports = {
     // Learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css
     enabled: process.env.NODE_ENV === 'production',
     options: {
-      whitelist: colors.flatMap((color) => [
+      safelist: pageColors.flatMap((color) => [
         `bg-${color}-200`,
         `hover:bg-${color}-200`,
         `text-${color}-900`,
