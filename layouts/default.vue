@@ -243,7 +243,7 @@ export default Vue.extend({
             shade
           ],
         }),
-        {}
+        {},
       );
     },
   },

@@ -176,7 +176,7 @@ export default Vue.extend({
     formatDate(montAndYear: MonthAndYear): string {
       return format(
         new Date(montAndYear.year, montAndYear.month - 1, 1),
-        'MMM yyyy'
+        'MMM yyyy',
       );
     },
   },

@@ -113,4 +113,8 @@ export default {
       background_color: '#252f3f',
     },
   },
+  tailwindcss: {
+    jit: false,
+    viewer: false,
+  },
 };

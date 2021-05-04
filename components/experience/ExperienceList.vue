@@ -67,7 +67,7 @@ export default Vue.extend({
   computed: {
     tags(): Tag[] {
       const experiencesTags = this.experiences.flatMap(
-        (experience: Experience) => experience.tags
+        (experience: Experience) => experience.tags,
       );
 
       return Object.values(tags).filter((tag) => experiencesTags.includes(tag));
