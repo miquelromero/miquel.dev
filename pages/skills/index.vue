@@ -1,7 +1,7 @@
 <template>
   <div class="flex-grow flex flex-col justify-center text-center">
     <DrawingsSkills
-      class="sm:w-1/2 md:w-1/3 h-auto text-primary-500 mb-8 mx-auto transition-colors duration-600"
+      class="w-full sm:w-1/2 md:w-1/3 h-auto text-primary-500 mb-8 mx-auto transition-colors duration-600"
     />
     <div
       class="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl"
