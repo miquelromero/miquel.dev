@@ -11,11 +11,11 @@
     "lint": "yarn lint:js"
   },
   "dependencies": {
-    "@bytegem/vue-heroicons": "^0.5.0",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@nuxtjs/pwa": "^3.1.2",
     "@nuxtjs/sitemap": "^2.4.0",
     "@nuxtjs/svg": "^0.1.12",
+    "@vue-hero-icons/outline": "^1.7.2",
     "date-fns": "^2.16.1",
     "devicon": "^2.2.0",
     "marked": "^2.0.3",
