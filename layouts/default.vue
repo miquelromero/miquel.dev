@@ -95,6 +95,7 @@
           leave-class="opacity-100"
           leave-to-class="opacity-0"
           mode="out-in"
+          @after-leave="scrollToTop"
         >
           <h1
             :key="currentPage.index"
@@ -276,6 +277,10 @@ export default Vue.extend({
     this.$refs.container.removeEventListener('wheel', this.handleWheel);
   },
   methods: {
+    scrollToTop() {
+      this.$refs.container.scrollTop = 0;
+      console.log('scrollToTop');
+    },
     closeDrawer() {
       this.isDrawerVisible = false;
     },
