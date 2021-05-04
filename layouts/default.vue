@@ -51,7 +51,7 @@
         <ul class="w-full flex flex-col space-y-2">
           <li v-for="page in pages" :key="page.index">
             <NuxtLink
-              class="transition-shadow duration-300 ease-in-out font-mono  flex h-10 items-center text-gray-200"
+              class="transition-shadow duration-300 ease-in-out font-mono flex h-10 items-center text-gray-200"
               :class="`hover:bg-${page.colorClass}-200 hover:text-${page.colorClass}-900`"
               :active-class="`bg-${page.colorClass}-200 text-${page.colorClass}-900 shadow-sm hover:shadow-none`"
               exact
@@ -157,7 +157,6 @@ import LinkedinIcon from '@/assets/icons/linkedin.svg?inline';
 import GithubIcon from '@/assets/icons/github.svg?inline';
 import pattern from '@/assets/patterns/pattern.svg?data';
 const colors = require('tailwindcss/colors');
-console.log(colors)
 
 interface BottomLink {
   href: string;
@@ -207,6 +206,18 @@ export default Vue.extend({
       pattern,
     };
   },
+  head() {
+    return {
+      link: [
+        {
+          rel: 'canonical',
+          href: `https://miquel.dev${
+            this.$route.path === '/' ? '' : this.$route.path
+          }`,
+        },
+      ],
+    };
+  },
   computed: {
     firstPage(): Page {
       return pages[0];
@@ -228,7 +239,9 @@ export default Vue.extend({
       return shades.reduce(
         (acc: any, shade: number) => ({
           ...acc,
-          [`--color-primary-${shade}`]: colors[this.currentPage.colorName][shade],
+          [`--color-primary-${shade}`]: colors[this.currentPage.colorName][
+            shade
+          ],
         }),
         {}
       );
@@ -345,18 +358,6 @@ export default Vue.extend({
         this.navigateToNextPage();
       }
     },
-  },
-  head() {
-    return {
-      link: [
-        {
-          rel: 'canonical',
-          href: `https://miquel.dev${
-            this.$route.path === '/' ? '' : this.$route.path
-          }`,
-        },
-      ],
-    };
   },
 });
 </script>

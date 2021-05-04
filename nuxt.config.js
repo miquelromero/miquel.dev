@@ -21,8 +21,8 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: ''
-      }
+        content: '',
+      },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },

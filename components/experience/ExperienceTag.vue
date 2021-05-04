@@ -21,11 +21,6 @@ import Vue from 'vue';
 import AppTag from '@/components/ui/AppTag.vue';
 import { Tag } from '~/assets/profile/tags';
 
-interface Data {
-  highlightedTag: string | null;
-  fixedTag: string | null;
-}
-
 export default Vue.extend({
   name: 'ExperienceList',
   components: {

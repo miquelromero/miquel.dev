@@ -71,6 +71,13 @@ export default Vue.extend({
       text: '',
     };
   },
+  head() {
+    return {
+      title: 'Contact me',
+      description:
+        'Send me an email at miquelromero@outlook.com or fill this form to contact me',
+    };
+  },
   methods: {
     createFormDataObj(data: any): FormData {
       const formData = new FormData();
@@ -95,13 +102,6 @@ export default Vue.extend({
         alert('something went wrong');
       }
     },
-  },
-  head() {
-    return {
-      title: 'Contact me',
-      description:
-        'Send me an email at miquelromero@outlook.com or fill this form to contact me',
-    };
   },
 });
 </script>
