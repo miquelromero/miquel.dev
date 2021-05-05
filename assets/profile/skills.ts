@@ -41,7 +41,7 @@ export const skills: Skill[] = [
     name: 'Remote proficiency',
     icon: GlobeIcon,
     text:
-      'I turned **home** into my perfect **office** for having a perfect **coding and communication** experience.',
+      'I turned **home** into my perfect **office** for having an optimal **coding and communication** experience.',
   },
   {
     name: 'Spoken languages',
