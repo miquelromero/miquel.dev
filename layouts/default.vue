@@ -279,7 +279,6 @@ export default Vue.extend({
   methods: {
     scrollToTop() {
       this.$refs.container.scrollTop = 0;
-      console.log('scrollToTop');
     },
     closeDrawer() {
       this.isDrawerVisible = false;
