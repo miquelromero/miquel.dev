@@ -114,7 +114,7 @@ export default {
     },
   },
   tailwindcss: {
-    jit: true,
+    jit: false, // Not compatible with safelist yet
     viewer: false,
   },
 };
