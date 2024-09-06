@@ -3,6 +3,14 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-07-30',
   // https://nuxt.com/docs/getting-started/upgrade#testing-nuxt-4
   future: { compatibilityVersion: 4 },
+  nitro: {
+    prerender: {
+      // Pre-render the homepage
+      routes: ['/'],
+      // Then crawl all the links on the page
+      crawlLinks: true
+    }
+  },
 
   // https://nuxt.com/modules
   modules: [
